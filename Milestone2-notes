@@ -1,0 +1,28 @@
+Develop from source material - MS1 wireframes and submissions
+
+
+Simple ER Diagram
+==============================
+Entities 
+	- Data Types
+	- Objects
+	- Basic Relationships
+
+Not full schema at this point. 
+
+
+Complete user stories
+=============================
+Gerkhin 
+	- Scenario (Behavior)
+	- Given (Initial State)
+	- When (Action)
+	- Then (Outcome (testable))
+	- And (continuation ifn)
+
+
+Project Management
+================================
+Link to project management resource
+(Github projects on github repository)
+
