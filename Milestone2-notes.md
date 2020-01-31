@@ -1,6 +1,7 @@
 Milestone 2 Requirements
 =========================== 
 <br>
+
 ### Simple EER Diagram  
 
 ------------------------
@@ -11,6 +12,7 @@ Entities
   - Basic Relationships
 
 *Not full schema at this point.*
+
 <br>
 
 ### Complete user stories
@@ -21,6 +23,7 @@ Entities
   - When (Action)
   - Then (Outcome (testable)) 
   - And (continuation ifn)
+  
 <br>
 
 ### Project Management
