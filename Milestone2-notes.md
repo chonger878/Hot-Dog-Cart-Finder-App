@@ -1,8 +1,7 @@
 Milestone 2 Requirements
 ===========================
 
-
-####Simple EER Diagram
+#### Simple EER Diagram
 ------------------------------
 Entities 
 	- Data Types
@@ -12,7 +11,7 @@ Entities
 *Not full schema at this point.* 
 
 
-####Complete user stories
+#### Complete user stories
 -------------------------------
 **Gerkhin** 
 	- Scenario (Behavior)
@@ -22,7 +21,7 @@ Entities
 	- And (continuation ifn)
 
 
-####Project Management
+#### Project Management
 -----------------------------------
 Link to project management resource
 (Github projects on github repository)
