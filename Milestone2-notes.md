@@ -1,6 +1,7 @@
 Milestone 2 Requirements
 ===========================
 
+
 #### Simple EER Diagram
 ------------------------------
 Entities 
@@ -11,6 +12,7 @@ Entities
 *Not full schema at this point.* 
 
 
+
 #### Complete user stories
 -------------------------------
 **Gerkhin** 
@@ -19,6 +21,7 @@ Entities
 	- When (Action)
 	- Then (Outcome (testable))
 	- And (continuation ifn)
+
 
 
 #### Project Management
