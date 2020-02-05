@@ -1,0 +1,26 @@
+{
+  "name": "ad320-teamproject",
+  "version": "1.0.0",
+  "description": "AD320 Team Assignment ======================",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chonger878/AD320-TeamProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chonger878/AD320-TeamProject/issues"
+  },
+  "homepage": "https://github.com/chonger878/AD320-TeamProject#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
