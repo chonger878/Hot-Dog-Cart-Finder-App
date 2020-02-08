@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Fugaz+One|Monsterrat:700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+  </head>
+  <body>
+    <div class="heading">
+        <span class="title">bobaphone</span>
+        <div class="sub-heading">
+            <span class="desc">find boba nearby</span>
+        </div>
+    </div>
+    <div class="container">
+        <div id="map"></div>
+    </div>
+
+    <div class="footer">
+        <span class="foot-notes">&copy;2019 mxwll.io | built with &hearts; for steph</span>
+    </div>
+
+    <script src="./maps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJWUOedbDU0sEJpDAd_mZ93qSoPzpIFIw&libraries=places&callback=initMap"
+    async defer></script>
+  </body>
+</html>
