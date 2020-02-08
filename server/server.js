@@ -1,6 +1,24 @@
 const express = require('express');
 const app = express();
 
+
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',
+    database: 'new_york_library'
+});
+
+connection.connect(function(err){
+    if(err){
+        console.error('error on connection: '+err.stack);
+        return;
+    }
+    console.log('connection on '+connection.threadId);
+});
+
+
 let customers = require('./data/customers.json');
 let vendors = require('./data/vendors.json');
 
@@ -12,6 +30,15 @@ things we need to support:
 - customers/:customerId => Get => customer
 ...
 */
+
+app.get('/', (req, res) => {
+    // make and return query as 'results'
+   connection.query(
+        'SELECT * FROM BIBLIOGRAPHY WHERE SubjectArea = \'Computer Science\'', 
+        function(error, results, fields){ if(error) throw error;
+    console.log(results[0]);
+    res.send(results[0])});
+})
 
 app.post('/signin', (req, res) => {
     // validate username/password
