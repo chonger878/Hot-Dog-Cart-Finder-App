@@ -2,10 +2,8 @@
   "name": "ad320-teamproject",
   "version": "1.0.0",
   "description": "AD320 Team Assignment ======================",
-  "main": "index.js",
   "scripts": {
-    "start": "nodemon ./server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -18,8 +16,13 @@
   },
   "homepage": "https://github.com/chonger878/AD320-TeamProject#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "express": "~4.16.1",
+    "mysql": "^2.18.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "^2.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
