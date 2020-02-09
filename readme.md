@@ -11,4 +11,6 @@ AD320 Team Assignment
 | Jack Boyd		 | john.boyd@seattlecolleges.edu | jleeboyd |
 | David Prismantas	 | dprismantas@yahoo.com	 | David-Prism | 
 
-[google sheets](https://docs.google.com/spreadsheets/d/1bB_k4FuFqDGQHGCCwIILQYbHrdbGUNrDiam0Lw_S_p8/edit?usp=sharing)
+[google sheets](https://docs.google.com/spreadsheets/d/1bB_k4FuFqDGQHGCCwIILQYbHrdbGUNrDiam0Lw_S_p8/edit?usp=sharing)  
+
+![system diagram](https://github.com/chonger878/AD320-TeamProject/misc-files/AD320_System_Diagram.png)
