@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'new_york_library'
+    database: 'hotDog'
 });
 
 connection.connect(function(err){
@@ -31,13 +31,18 @@ things we need to support:
 ...
 */
 
+var queryStr = `SELECT Customers.FirstName, Customers.CustomerID \n
+FROM Customers
+   JOIN Orders USING(CustomerID) \n
+WHERE CustomerID > 2;`;
+
 app.get('/', (req, res) => {
     // make and return query as 'results'
-   connection.query(
-        'SELECT * FROM BIBLIOGRAPHY WHERE SubjectArea = \'Computer Science\'', 
-        function(error, results, fields){ if(error) throw error;
-    console.log(results[0]);
-    res.send(results[0])});
+    connection.query(queryStr, 
+    function(error, results, fields){ 
+        if(error) throw error;
+        console.log(results[0]);
+        res.send(results[0])});
 })
 
 app.post('/signin', (req, res) => {
