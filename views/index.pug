@@ -3,3 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  h2 Here's your database:
+  
+  each item in dbReturn
+    p #{item.Tables_in_hotDog}
