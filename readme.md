@@ -16,4 +16,4 @@ AD320 Team Assignment
 
 ### System Diagram
 
-![system diagram](https://github.com/chonger878/AD320-TeamProject/blob/master/misc-files/AD320_System_Diagram.png)
+![system diagram](https://github.com/chonger878/AD320-TeamProject/blob/master/misc_files/AD320_System_Diagram.png)
