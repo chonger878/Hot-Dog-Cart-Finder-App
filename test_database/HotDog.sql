@@ -110,6 +110,7 @@ CREATE TABLE IF NOT EXISTS Orders(
   `Items`      INT 			  NOT NULL,
   
   PRIMARY KEY (OrderID, CustomerID),
+  INDEX fk_Orders_Customers_idx (CustomerID ASC),
   
   CONSTRAINT fk_Orders_Customers FOREIGN KEY (CustomerID)
     REFERENCES Customers (CustomerID)
@@ -136,6 +137,8 @@ CREATE TABLE IF NOT EXISTS Order_Items(
   `ItemID`  INT NOT NULL,
   
   PRIMARY KEY (OrderID, ItemID),
+  INDEX fk_Orders_has_Items_Items1_idx (ItemID ASC),
+  INDEX fk_Orders_has_Items_Orders1_idx (OrderID ASC),
   
   CONSTRAINT fk_Orders_has_Items_Orders1
     FOREIGN KEY (OrderID)
@@ -168,6 +171,7 @@ CREATE TABLE IF NOT EXISTS Menu(
   `Vendors_VendorID` INT         NOT NULL,
   
   PRIMARY KEY (MenuID, Vendors_VendorID),
+  INDEX fk_Menu_Vendors1_idx (Vendors_VendorID ASC),
   
   CONSTRAINT fk_Menu_Vendors1
     FOREIGN KEY (Vendors_VendorID)
@@ -194,6 +198,8 @@ CREATE TABLE IF NOT EXISTS Menu_Item(
   `ItemID` INT NOT NULL,
   
   PRIMARY KEY (MenuID, ItemID),
+  INDEX fk_Menu_has_Items_Items1_idx (ItemID ASC),
+  INDEX fk_Menu_has_Items_Menu1_idx  (MenuID ASC),
   
   CONSTRAINT fk_Menu_has_Items_Menu1
     FOREIGN KEY (MenuID)
