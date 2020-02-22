@@ -1,13 +1,18 @@
-.App {
+/* .App {
   text-align: center;
+  min-height: 100vh;
   display: inline-block;
   margin: 1rem;
   padding: 1rem;
-  border: 1rem solid black;
 }
 
 .App-resource {
   margin: 0.1rem;
   padding: 0.1rem;
   text-align: left;
+} */
+
+.App-content {
+  margin-top: 60px;
+
 }

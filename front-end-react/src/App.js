@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Contact from './components/contact/Contact';
+import Header from './components/header/Header';
 import './App.css';
 
 class App extends Component {
@@ -14,12 +16,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-resource">
+      <div className="App" style={{height: '100%'}}>
+        <Header />
+        <div className="App-content">
           {this.state.apiResponse.map(resource => (
             <p>First Name: {resource.FirstName} Last Name: {resource.FirstName} Phone: {resource.FirstName}</p>
           ))}
         </div>
+        <Contact />
       </div>
     );
   }
