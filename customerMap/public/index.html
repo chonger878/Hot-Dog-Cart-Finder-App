@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang = "en">
+<!--comment-->
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <meta http-equiv = "X-UA-Compatible" content = "ie = edge">
+    <!--just added this-->
+    <link rel="stylesheet" type="text/css" href="./main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Fascinate" rel="stylesheet"> 
+    <title>Map_Test</title>
+ 
+</head>
+<body>
+    <h1 id = "pageHeader" style="font-size:75px">Hot Dog Finder</h1>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            // Map options
+            var options = {
+                center: {lat: 47.6010, lng: -122.3290}, 
+                zoom: 15
+            }
+
+            // New map
+            var map = new google.maps.Map(document.getElementById('map'), options);
+            
+            
+            // Array of markers
+            var markers = [
+            {
+                coords: {lat: 47.6010, lng: -122.3290},
+                iconImage: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                content: "<h1>Cart 1</h1>"
+            },
+            {
+                coords: {lat: 47.6040, lng: -122.3260},
+                content: "<h1>Cart 2</h1>"
+            },
+            {
+                coords: {lat: 47.6050, lng: -122.3240},
+                content: "<h1>Cart 3</h1>"
+            }
+            ];
+
+            //Loop through markers array
+            for (i = 0; i < markers.length; i++) {
+                addMarker(markers[i]);
+            }
+
+            //a function for adding markers to the map
+            function addMarker(props) {
+                var marker = new google.maps.Marker ({
+                position: props.coords,
+                map: map,
+                //icon: props.iconImage
+                });
+                // check for custom icon
+                if (props.iconImage) {
+                    marker.setIcon(props.iconImage);
+                }
+                //check content
+                if (props.content) {
+                    var infoWindow = new google.maps.InfoWindow ({
+                    content: props.content
+                    });
+
+                    marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
+            });
+                }
+            }
+        }
+    </script>
+    <script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=
+    AIzaSyCJWUOedbDU0sEJpDAd_mZ93qSoPzpIFIw&libraries=places&callback=initMap">
+    
+    
+    </script>
+</body>
+</html>
