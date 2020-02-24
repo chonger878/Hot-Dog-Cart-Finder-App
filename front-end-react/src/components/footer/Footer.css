@@ -1,0 +1,41 @@
+.footer {
+    position: fixed;
+    width: 100%;
+    background-color: brown;
+    height: 50px;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.footer-nav-items a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-nav-items ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.footer-nav-items li {
+    padding: 0.5rem;
+}
+
+
+.footer-nav-items a:hover,
+.footer-nav-items a:active {
+    color: orange;
+}

@@ -15,10 +15,10 @@ const db = mysql.createConnection({
 
 db.connect(function(err){
     if(err){
-        console.error('error on connection: '+err.stack);
+        console.error('error on connection: '+ err.stack);
         return;
     }
-    console.log('connection on '+db.threadId);
+    console.log('connection on '+ db.threadId);
 });
 
 module.exports = db;
