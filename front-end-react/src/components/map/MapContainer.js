@@ -37,6 +37,10 @@ class MapContainer extends Component {
     })
   }
 
+  onCloseButtunClick() {
+    this.setState({isCartSelected: false});
+  }
+
 
   render() {
     return (
@@ -52,6 +56,8 @@ class MapContainer extends Component {
           </Map>
         </div>
         <div className={`${this.state.isCartSelected}`}>
+          <button id="closeButton" onClick={() => this.onCloseButtunClick()}>close</button>
+
           <h3>cart number: {this.state.selectedCart.content}</h3>
         </div>
       </div>
