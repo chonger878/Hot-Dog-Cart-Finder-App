@@ -1,18 +1,21 @@
-/* .App {
+.App {
   text-align: center;
   min-height: 100vh;
-  display: inline-block;
-  margin: 1rem;
-  padding: 1rem;
+  min-width: 100vh;
+
+  display: flex;
 }
 
 .App-resource {
   margin: 0.1rem;
   padding: 0.1rem;
   text-align: left;
-} */
+}
 
 .App-content {
   margin-top: 60px;
-
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }

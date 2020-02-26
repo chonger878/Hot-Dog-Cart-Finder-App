@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
+import Footer from '../components/footer/Footer';
+import Header from '../components/header/Header';
+import Map from '../components/map/MapContainer.js';
 import './App.css';
 
 class App extends Component {
@@ -19,15 +20,15 @@ class App extends Component {
       <div className="App" style={{height: '100%'}}>
         <Header />
         <div className="App-content">
-          {this.state.apiResponse.map(resource => (
+          <Map />
+          {/* {this.state.apiResponse.map(resource => (
             <p>First Name: {resource.FirstName} Last Name: {resource.FirstName} Phone: {resource.FirstName}</p>
-          ))}
+          ))} */}
         </div>
         <Footer />
       </div>
     );
   }
-
 }
 
 export default App;
