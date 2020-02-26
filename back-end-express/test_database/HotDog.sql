@@ -58,17 +58,20 @@ CREATE TABLE IF NOT EXISTS Vendors(
   `Phone`         VARCHAR(45) NULL,
   `Location`      VARCHAR(45) NOT NULL,
   `Email`         VARCHAR(45) NULL,
+  `coords`        JSON,
+  `iconImage`     VARCHAR(300),
+  `content`       VARCHAR(45), 
   
   PRIMARY KEY (VendorID));
 -- -----------------------------------------------------
 -- Data Vendors
 -- -----------------------------------------------------
 INSERT INTO Vendors VALUES
-	(1, '09:00', '17:00', ('M,T,W,Th'), 'Marta', 'Dennes', 'Twitterlist', '615-747-7967', '123 Fake Street', 'mdennes0@squarespace.com'),
- 	(2, '09:00', '17:00', ('M,T,W'), 'Esdras', 'Caldecott', 'Jatri', '202-563-0622', '321 More Fake Street', 'ecaldecott1@salon.com'),
- 	(3, '09:00', '17:00', ('M,T,W,Th,F'), 'Eddie', 'Gulliford', 'Wikizz', '719-439-2366', '222 Some Street', 'egulliford2@yelp.com'),
- 	(4, '09:00', '17:00', ('F,S,Sn'), 'Janeen', 'Clougher', 'Eamia', '864-575-4106', 'Area 51, NM', 'jclougher3@cmu.edu'),
- 	(5, '09:00', '17:00', ('M,T,W'), 'Abeu', 'Garth', 'Linkbridge', '587-256-7827', '111 Underwater Drive, Atlantis', 'agarth4@xinhuanet.com');
+	(1, '09:00', '17:00', ('M,T,W,Th'), 'Marta', 'Dennes', 'Twitterlist', '615-747-7967', '123 Fake Street', 'mdennes0@squarespace.com', '{"lat": "47.6010", "lng": "-122.3290"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 1"),
+ 	(2, '09:00', '17:00', ('M,T,W'), 'Esdras', 'Caldecott', 'Jatri', '202-563-0622', '321 More Fake Street', 'ecaldecott1@salon.com', '{"lat": "47.6040", "lng": "-122.3260"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 2"),
+ 	(3, '09:00', '17:00', ('M,T,W,Th,F'), 'Eddie', 'Gulliford', 'Wikizz', '719-439-2366', '222 Some Street', 'egulliford2@yelp.com', '{"lat": "47.6050", "lng": "-122.3240"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 3"),
+ 	(4, '09:00', '17:00', ('F,S,Sn'), 'Janeen', 'Clougher', 'Eamia', '864-575-4106', 'Area 51, NM', 'jclougher3@cmu.edu', '{"lat": "47.6060", "lng": "-122.3250"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 4"),
+ 	(5, '09:00', '17:00', ('M,T,W'), 'Abeu', 'Garth', 'Linkbridge', '587-256-7827', '111 Underwater Drive, Atlantis', 'agarth4@xinhuanet.com', '{"lat": "47.6020", "lng": "-122.3270"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 5");
 
 
 

@@ -6,46 +6,34 @@ const style = {
   maxWidth: '100%',
   maxHeight: '100%',
   margin: '0',
-  border: 'solid 10px #F00',
+  border: 'solid 10px brown',
   borderRadius: '20px',
   display: 'block',
 }
-
-const iconImage = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
 class MapContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      carts: [// David's Mrkers
-        {
-          coords: {lat: 47.6010, lng: -122.3290},
-          iconImage,
-          content: "Cart 1"
-        },
-        {
-          coords: {lat: 47.6040, lng: -122.3260},
-          iconImage,
-          content: "Cart 2"
-        },
-        {
-          coords: {lat: 47.6050, lng: -122.3240},
-          iconImage,
-          content: "Cart 3"
-        }
-      ]
+      carts: [],
+      isCartSelected: false,
+      selectedCart: []
     }
   }
+
+  componentDidMount() {
+    fetch("/carts").then(res => res.json()).then(carts => this.setState({carts: carts}));
+ }
 
   addMarker = () => { // Davids's addMarker fn
     return this.state.carts.map((cart, index) => {
       return <Marker 
         key={index} 
         id={index} 
-        position={{lat: cart.coords.lat, lng: cart.coords.lng}}
+        position={JSON.parse(cart.coords)}
         icon={cart.iconImage}
-        onClick={() => alert(`${cart.content}`)} />
+        onClick={() => this.setState({selectedCart: cart, isCartSelected: true})} />
     })
   }
 
@@ -53,20 +41,26 @@ class MapContainer extends Component {
   render() {
     return (
       <div className="map-container">
-        <h1 id="pageHeader">Hot Dog Finder</h1>
-        <Map
-          google={this.props.google}
-          zoom={15}
-          style={style}
-          initialCenter={{ lat: 47.6010, lng: -122.3290}}
-        >
-          {this.addMarker()}
-        </Map>
+        <div className="map">
+          <Map
+            google={this.props.google}
+            zoom={15}
+            style={style}
+            initialCenter={{lat: 47.6040, lng: -122.3250}}
+          >
+            {this.addMarker()}
+          </Map>
+        </div>
+        <div className={`${this.state.isCartSelected}`}>
+          <h3>cart number: {this.state.selectedCart.content}</h3>
+        </div>
       </div>
     );
   }
 }
 
 export default GoogleApiWrapper ({
-  apiKey: 'AIzaSyCJWUOedbDU0sEJpDAd_mZ93qSoPzpIFIw&libraries=places&callback=initMap'
+  // https://console.cloud.google.com/google/maps-apis/apis/maps-embed-backend.googleapis.com/metrics?project=ad320-269405
+  // apiKey: 'AIzaSyCJWUOedbDU0sEJpDAd_mZ93qSoPzpIFIw&libraries=places&callback=initMap'
+  apiKey: 'AIzaSyCZ_DeGWRaw9b0ptA2vUJy55AlLcsF2KHE'
 })(MapContainer);

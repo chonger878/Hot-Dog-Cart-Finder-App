@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios';
 import Footer from '../components/footer/Footer';
 import Header from '../components/header/Header';
-import Map from '../components/map/MapContainer.js';
+import Map from '../components/map/MapContainer';
+import Carts from '../components/carts/Carts';
 import './App.css';
 
 class App extends Component {
@@ -21,9 +23,6 @@ class App extends Component {
         <Header />
         <div className="App-content">
           <Map />
-          {/* {this.state.apiResponse.map(resource => (
-            <p>First Name: {resource.FirstName} Last Name: {resource.FirstName} Phone: {resource.FirstName}</p>
-          ))} */}
         </div>
         <Footer />
       </div>

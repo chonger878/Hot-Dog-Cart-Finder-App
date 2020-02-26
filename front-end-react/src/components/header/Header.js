@@ -9,7 +9,7 @@ var Header = props => {
                 <div></div>
                 <div className="header-logo">
                     <img src={require('../media/logo.jpg')}/>   
-                    <h3>title.....</h3>
+                    <h3>Hot Dog Finder</h3>
                 </div>
                 <div className="spacer"></div>
                 <div className="header-nav-items">

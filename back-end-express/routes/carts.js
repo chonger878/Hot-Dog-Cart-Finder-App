@@ -9,7 +9,15 @@ router.get('/', function(req, res, next) {
   db.query(`SELECT * FROM ${resourceKey}`, (err,rows) => {
     if(err) throw err;
 
-    var resource = rows.map(row => ({FirstName: row.FirstName, LastName: row.LastName, Phone: row.Phone}));
+    var resource = rows.map(row => ({
+      FirstName: row.FirstName, 
+      LastName: row.LastName, 
+      Phone: row.Phone,
+      Email: row.email,
+      coords: row.coords,
+      iconImage: row.iconImage,
+      content: row.content
+    }));
 
     res.send(resource);
   });
