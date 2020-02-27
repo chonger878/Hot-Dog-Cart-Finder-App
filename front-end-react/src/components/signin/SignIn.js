@@ -14,11 +14,7 @@ class SignIn extends React.Component
     validate() {
         let username = document.userData.user.value;
         let password = document.userData.pass.value;
-        const isCorrectSignIn = false;
-
-        if (isCorrectSignIn)
-        {
-
+        let isCorrectSignIn = false;
 
             //if username is blank
             if (username === "" || password === "")
@@ -30,7 +26,7 @@ class SignIn extends React.Component
             matches the user information with data in our database*/
             else if (username === this.props.user && password === this.props.pass)
             {
-                alert("cool");
+                alert("login successful");
                 //go to main App component via callback
                 isCorrectSignIn = true;
                 this.props.callbackFromParent(isCorrectSignIn);
@@ -41,7 +37,7 @@ class SignIn extends React.Component
             {
                 alert("Incorrect sign in");
             }
-        }    
+         
     }
 
     render()

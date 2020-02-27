@@ -12,10 +12,10 @@ class MyMap extends React.Component
     {
         if(this.props.show === true)
         {
-            alert("show");
+            alert("show map");
         }
         else{
-            alert("noshow");
+            alert("do not show map");
             alert(this.props.show);
         }
     }
