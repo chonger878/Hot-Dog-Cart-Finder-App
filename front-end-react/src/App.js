@@ -33,7 +33,7 @@ class App extends Component {
             <SignIn callbackFromParent={this.myCallback} user={resource.Email} pass={resource.Password}/> 
             </div>
           ))}
-          <Map show = {this.state.DataFromChild} />
+          {/* <Map show = {this.state.DataFromChild} /> */}
           
         </div>
         <Footer />
