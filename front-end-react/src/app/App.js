@@ -13,9 +13,9 @@ class App extends Component {
     this.state = {apiResponse: []};
   }
 
-  componentWillMount() { // we can add a handler instead of this biuld in function
-    axios("http://localhost:9000/carts").then(res => this.setState({apiResponse: res.data}));
- }
+//   componentWillMount() { // we can add a handler instead of this biuld in function
+//     axios("http://localhost:9000/carts").then(res => this.setState({apiResponse: res.data}));
+//  }
 
   render() {
     return (
