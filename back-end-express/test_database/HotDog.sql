@@ -28,17 +28,19 @@ CREATE TABLE IF NOT EXISTS Customers(
   `LastName`   VARCHAR(45) NOT NULL,
   `Phone`      VARCHAR(45) NOT NULL,
   `Email`      VARCHAR(45) NOT NULL,
+  `Password`   VARCHAR(45) NOT NULL,
   
   PRIMARY KEY (CustomerID));
 -- -----------------------------------------------------
 -- Data Customers
 -- -----------------------------------------------------
 INSERT INTO Customers VALUES
-	(1, 'Mead', 'Pindell', '662-681-1441', 'mpindell0@sun.com'),
-	(2, 'Constance', 'Leyzell', '582-554-2989', 'cleyzell1@amazon.co.jp'),
-	(3, 'Armando', 'Tyce', '825-189-4448', 'atyce2@booking.com'),
-	(4, 'Jephthah', 'Nazaret', '663-687-5318', 'jnazaret3@si.edu'),
-	(5, 'Sophia', 'Pitceathly', '346-319-1983', 'spitceathly4@virginia.edu');
+	(1, 'Mead', 'Pindell', '662-681-1441', 'john.boyd@seattlecolleges.edu','12345'),
+	(2, 'Constance', 'Leyzell', '582-554-2989', 'cleyzell1@amazon.co.jp','1223'),
+	(3, 'Armando', 'Tyce', '825-189-4448', 'atyce2@booking.com','1232'),
+	(4, 'Jephthah', 'Nazaret', '663-687-5318', 'jnazaret3@si.edu','1213'),
+	(5, 'Sophia', 'Pitceathly', '346-319-1983', 'spitceathly4@virginia.edu','12');
+
 
 
 
@@ -64,11 +66,11 @@ CREATE TABLE IF NOT EXISTS Vendors(
 -- Data Vendors
 -- -----------------------------------------------------
 INSERT INTO Vendors VALUES
-	(1, '09:00', '17:00', ('M,T,W,Th'), 'Marta', 'Dennes', 'Twitterlist', '615-747-7967', '123 Fake Street', 'mdennes0@squarespace.com'),
- 	(2, '09:00', '17:00', ('M,T,W'), 'Esdras', 'Caldecott', 'Jatri', '202-563-0622', '321 More Fake Street', 'ecaldecott1@salon.com'),
- 	(3, '09:00', '17:00', ('M,T,W,Th,F'), 'Eddie', 'Gulliford', 'Wikizz', '719-439-2366', '222 Some Street', 'egulliford2@yelp.com'),
- 	(4, '09:00', '17:00', ('F,S,Sn'), 'Janeen', 'Clougher', 'Eamia', '864-575-4106', 'Area 51, NM', 'jclougher3@cmu.edu'),
- 	(5, '09:00', '17:00', ('M,T,W'), 'Abeu', 'Garth', 'Linkbridge', '587-256-7827', '111 Underwater Drive, Atlantis', 'agarth4@xinhuanet.com');
+(1, '09:00', '17:00', ('M,T,W,Th'), 'Marta', 'Dennes', 'Twitterlist', '615-747-7967', '123 Fake Street', 'mdennes0@squarespace.com'), 
+  (2, '09:00', '17:00', ('M,T,W'), 'Esdras', 'Caldecott', 'Jatri', '202-563-0622', '321 More Fake Street', 'ecaldecott1@salon.com'), 
+  (3, '09:00', '17:00', ('M,T,W,Th,F'), 'Eddie', 'Gulliford', 'Wikizz', '719-439-2366', '222 Some Street', 'egulliford2@yelp.com'),
+  (4, '09:00', '17:00', ('F,S,Sn'), 'Janeen', 'Clougher', 'Eamia', '864-575-4106', 'Area 51, NM', 'jclougher3@cmu.edu'),
+  (5, '09:00', '17:00', ('M,T,W'), 'Abeu', 'Garth', 'Linkbridge', '587-256-7827', '111 Underwater Drive, Atlantis', 'agarth4@xinhuanet.com');
 
 
 
