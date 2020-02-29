@@ -16,7 +16,6 @@ var Header = props => {
                     <ul>
                         <li><a href="/">LOG IN</a></li>
                         <li><a href="/">SIGN UP</a></li>
-
                     </ul>
                 </div>
             </nav>

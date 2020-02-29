@@ -8,8 +8,9 @@ router.get('/', function(req, res, next) {
   
   db.query(`SELECT * FROM ${resourceKey}`, (err,rows) => {
     if(err) throw err;
-
+    console.log(rows)
     var resource = rows.map(row => ({
+      id: row.VendorID,
       FirstName: row.FirstName, 
       LastName: row.LastName, 
       Phone: row.Phone,

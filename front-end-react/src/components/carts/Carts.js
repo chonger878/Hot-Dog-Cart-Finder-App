@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
+import {Link} from "react-router-dom";
+import './Carts.css'
 
 class Carts extends Component {
   constructor(props) {
@@ -6,16 +8,20 @@ class Carts extends Component {
     this.state = {carts: []};
   }
 
-  componentDidMount() { // we can add a handler instead of this biuld in function
+  componentDidMount() {
     fetch("/carts").then(res => res.json()).then(carts => this.setState({carts: carts}));
- }
+  }
 
   render() {
     return (
-      <div>
+      <div className="carts">
+        <div className="list">
           {this.state.carts.map(cart => (
-              <h6>name: {cart.FirstName}</h6>
+            <Link to={`/carts/${cart.id}`}>
+              <div className="items">{cart.FirstName}</div>
+            </Link>
           ))}
+        </div>
       </div>
     );
   }
