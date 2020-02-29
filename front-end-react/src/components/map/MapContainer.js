@@ -28,6 +28,8 @@ class MapContainer extends Component {
 
   addMarker = () => { // Davids's addMarker fn
     return this.state.carts.map((cart, index) => {
+      console.log(cart)
+
       return <Marker 
         key={index} 
         id={index} 

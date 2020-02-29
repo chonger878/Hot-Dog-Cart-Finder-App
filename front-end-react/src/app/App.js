@@ -7,8 +7,6 @@ import Nav from '../components/nav/Nav';
 import About from '../components/about/About';
 import Contact from '../components/contact/Contact';
 import Carts from '../components/carts/Carts';
-
-
 import './App.css';
 
 class App extends Component {
