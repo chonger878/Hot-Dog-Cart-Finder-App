@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
 
 import './Nav.css'
 
@@ -12,6 +11,7 @@ var Nav = () => {
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/carts">Carts</a></li>
                 <li><a href="/map">Map</a></li>
+                <li><a href="/help">Help</a></li>
             </ul>
         </nav>
     );

@@ -7,6 +7,7 @@ import Nav from '../components/nav/Nav';
 import About from '../components/about/About';
 import Contact from '../components/contact/Contact';
 import Carts from '../components/carts/Carts';
+import Help from '../components/help/Help';
 import './App.css';
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
               <Route path="/contact" component={Contact}/>
               <Route path="/carts" component={Carts}/>
               <Route path="/map" component={Map}/>
+              <Route path="/help" component={Help}/>
             </Switch>
 
           </div>

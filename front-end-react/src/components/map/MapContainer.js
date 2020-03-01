@@ -34,12 +34,12 @@ class MapContainer extends Component {
         key={index} 
         id={index} 
         position={JSON.parse(cart.coords)}
-        icon={cart.iconImage}
+        //icon={cart.iconImage}
         onClick={() => this.setState({selectedCart: cart, isCartSelected: true})} />
     })
   }
 
-  onCloseButtunClick() {
+  onCloseButtonClick() {
     this.setState({isCartSelected: false});
   }
 
@@ -58,9 +58,14 @@ class MapContainer extends Component {
           </Map>
         </div>
         <div className={`${this.state.isCartSelected}`}>
-          <button id="closeButton" onClick={() => this.onCloseButtunClick()}>close</button>
-
-          <h3>cart number: {this.state.selectedCart.content}</h3>
+          <button id="closeButton" onClick={() => this.onCloseButtonClick()}>close</button>
+          <div className = "cartInfo">
+            <h3> {this.state.selectedCart.content}</h3>
+            <p>{this.state.selectedCart.FirstName} {this.state.selectedCart.LastName}</p>
+            <p>Phone: {this.state.selectedCart.Phone}</p>
+            <p>Email: {this.state.selectedCart.Email}</p>
+            <p>Location: {this.state.selectedCart.Location}</p>
+          </div>
         </div>
       </div>
     );

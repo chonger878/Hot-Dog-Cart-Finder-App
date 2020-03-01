@@ -5,10 +5,10 @@ var db = require('./db');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   var resourceKey = 'vendors';
-  
+
   db.query(`SELECT * FROM ${resourceKey}`, (err,rows) => {
     if(err) throw err;
-    console.log(rows)
+
     var resource = rows.map(row => ({
       id: row.VendorID,
       FirstName: row.FirstName, 
