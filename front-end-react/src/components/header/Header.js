@@ -14,7 +14,7 @@ var Header = props => {
                 <div className="spacer"></div>
                 <div className="header-nav-items">
                     <ul>
-                        <li><a href="/">LOG IN</a></li>
+                    <li><a href="/">LOG IN</a></li>{/* <li><a href="/signin">LOG IN</a></li> */}
                         <li><a href="/">SIGN UP</a></li>
                     </ul>
                 </div>
