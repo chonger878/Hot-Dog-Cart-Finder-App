@@ -1,0 +1,26 @@
+.map-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.map {
+    width: 40%;
+    height: 80%;
+    position: fixed;
+    padding: 0 1rem;
+    left: 10vh;
+}
+
+.true {
+    display: inline-block;
+    width: 40%;
+    height: 77%;
+    position: fixed;
+    right: 1rem;
+    border: solid 10px brown;
+    border-radius: 20px;
+}
+
+.false {
+    display: none;
+}
