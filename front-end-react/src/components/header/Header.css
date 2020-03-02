@@ -18,14 +18,15 @@
     top: 0;
     margin: 0;
     padding: 0;
-    border: 5px solid olive;
-    border-radius: 5px;
+    border: 5px solid brown;
+    border-radius: 30px;
     width: 40px;
     height: 40px;
 }
 
 .header-logo h3 {
     padding: 0 1rem;
+    color: white;
 }
 
 .header-nav {
@@ -42,6 +43,7 @@
 .header-nav-items a {
     color: white;
     text-decoration: none;
+    font-weight: bolder;
 }
 
 .header-nav-items ul {
@@ -52,7 +54,7 @@
 }
 
 .header-nav-items li {
-    padding: 0.5rem;
+    padding: 2rem;
 }
 
 

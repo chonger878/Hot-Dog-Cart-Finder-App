@@ -6,6 +6,7 @@ import Nav from '../components/nav/Nav';
 import About from '../components/about/About';
 import Contact from '../components/contact/Contact';
 import Carts from '../components/carts/Carts';
+import Help from '../components/help/Help';
 import Cart from '../components/cart/Cart';
 
 import './App.css';
@@ -24,6 +25,7 @@ class App extends Component {
               <Route path="/contact" component={Contact}/>
               <Route path="/carts" exact component={Carts}/>
               <Route path="/carts/:id" component={Cart}/>
+              <Route path="/help" component={Help}/>
               <Route path="/map" component={Map}/>
             </Switch>
           </div>
