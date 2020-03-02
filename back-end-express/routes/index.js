@@ -12,7 +12,8 @@ router.get('/carts', function(req, res, next) {
       FirstName: row.FirstName, 
       LastName: row.LastName, 
       Phone: row.Phone,
-      Email: row.email,
+      Email: row.Email,
+      Location: row.Location,
       coords: row.coords,
       iconImage: row.iconImage,
       content: row.content
@@ -30,11 +31,29 @@ router.get('/carts/:id', function(req, res, next) {
       FirstName: row.FirstName, 
       LastName: row.LastName, 
       Phone: row.Phone,
-      Email: row.email,
+      Email: row.Email,
       coords: row.coords,
       iconImage: row.iconImage,
       content: row.content
     }));
+
+    res.send(resource);
+  });
+});
+
+router.get('/signin', function(req, res, next) {
+  var resourceKey = 'Customers';
+  //for now this returns the first users Username and password, but we can change that later
+  db.query(`SELECT * FROM ${resourceKey} WHERE CustomerID=1`, (err,rows) => {
+    if(err) throw err;
+    console.log(rows);
+    var resource = rows.map(row => (
+      {
+      FirstName: row.FirstName, 
+      LastName: row.LastName, 
+      Email: row.Email, 
+      Password: row.Password
+      }));
 
     res.send(resource);
   });
