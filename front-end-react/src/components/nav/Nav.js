@@ -12,6 +12,7 @@ var Nav = () => {
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/carts">Carts</a></li>
                 <li><a href="/map">Map</a></li>
+                <li><a href="/help">Help</a></li>
                 <li><a href="/signin">SignIn</a></li>
             </ul>
         </nav>
