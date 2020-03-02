@@ -8,10 +8,22 @@ import Contact from '../components/contact/Contact';
 import Carts from '../components/carts/Carts';
 import Help from '../components/help/Help';
 import Cart from '../components/cart/Cart';
-
+import SignIn from '../components/signin/SignIn';
 import './App.css';
 
 class App extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {apiResponse: [],
+  //     DataFromChild: false
+  //   };
+  // }
+  // myCallback = (isCorrectSignIn) => {// when the callback sent to SignIn is altered, it is now usable in the App
+  //   this.setState({ DataFromChild: isCorrectSignIn});
+  // }
+  // componentWillMount() { // we can add a handler instead of this biuld in function
+  //   axios("http://localhost:9000/signin").then(res => this.setState({apiResponse: res.data}));
+  // }
   render() {
     return (
       <Router>
@@ -27,6 +39,7 @@ class App extends Component {
               <Route path="/carts/:id" component={Cart}/>
               <Route path="/help" component={Help}/>
               <Route path="/map" component={Map}/>
+              <Route path="/signin" component={SignIn}/>              
             </Switch>
           </div>
         </div>
