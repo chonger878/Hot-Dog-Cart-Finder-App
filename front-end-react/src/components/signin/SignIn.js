@@ -1,8 +1,10 @@
 import React from 'react';
-import signInImage from '../media/stop-signin.jpg';
+//import signInImage from '../media/profile-logo.png';
+import signInImage from '../media/hotdog-signin.jpg';
 import './SignInPage.css';
 import axios from 'axios';
 
+//tasks: setup sign in to validate comparing all users in customer table instead of one.
 class SignIn extends React.Component
 {
     constructor(props) {
@@ -14,6 +16,7 @@ class SignIn extends React.Component
     //   myCallback = (isCorrectSignIn) => {// when the callback sent to SignIn is altered, it is now usable in the App
     //     this.setState({ DataFromChild: isCorrectSignIn});
     //   }
+    
       componentWillMount() { // we can add a handler instead of this biuld in function
         axios("http://localhost:9000/signin").then(res => this.setState({apiResponse: res.data}));
       }
@@ -21,7 +24,7 @@ class SignIn extends React.Component
     //will validate if the user info matches our database
     //if valid then bring user to map page
     //??strange error with datatype conversion into validate. switches param order and turns databaseUsername to object
-    validate(databaseUsername, databasePassword) {
+    validate(databaseEmail, databasePassword, FirstName, LastName) {
         let username = document.userData.user.value;
         let password = document.userData.pass.value;
         //let isCorrectSignIn = false;
@@ -35,9 +38,10 @@ class SignIn extends React.Component
 
             /*sign in is valid go to map
             matches the user information with data in our database*/
-            else if (username === databaseUsername) //&& password === databasePassword)
+            else if (username === databaseEmail && password === databasePassword)
             {
-                alert("login successful");
+                alert("Login Successful, Hello "+ FirstName + " " + LastName);
+                
                 //go to main App component via callback
                 //isCorrectSignIn = true;
                 //this.props.callbackFromParent(isCorrectSignIn);
@@ -46,7 +50,7 @@ class SignIn extends React.Component
             //else username does not match our database, redo sign in
             else
             {
-                alert("Incorrect sign in");
+                alert("Sign in does not match our records");
             }
          
     }
@@ -68,8 +72,8 @@ class SignIn extends React.Component
                {/*form to input user info and call validate function*/}
                <form name = "userData"> 
 
-                  Username: <input type="text" name = "user"/>
-                  Password: <input type="text" name = "pass" />
+                  Username: <input type= "text" name = "user"/>
+                  Password: <input type= "text" name = "pass" />
 
                  {/*onClick syntax this.function.bind(this)*/} 
                  {/* <input type="submit" value="Log In" name = "click" onClick = {this.validate.bind(this)}/> */}
@@ -77,7 +81,7 @@ class SignIn extends React.Component
                      <div>
                         {/*test database data is coming through*/}
                         {/* Email: {resource.Email} Password: {resource.Password} */}
-                        <input type="submit" value="Log In" name = "click" onClick = {this.validate.bind(resource.Email, resource.Password)}/>   
+                        <input type="submit" value="Log In" name = "click" onClick = {this.validate.bind(this, resource.Email, resource.Password, resource.FirstName, resource.LastName)}/>   
                         {/*sign up link*/}
                         <a href="/signup">Signup</a>
                     </div>

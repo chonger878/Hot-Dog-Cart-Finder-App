@@ -35,11 +35,11 @@ CREATE TABLE IF NOT EXISTS Customers(
 -- Data Customers
 -- -----------------------------------------------------
 INSERT INTO Customers VALUES
-	(1, 'Mead', 'Pindell', '662-681-1441', 'john.boyd@seattlecolleges.edu','12345'),
-	(2, 'Constance', 'Leyzell', '582-554-2989', 'cleyzell1@amazon.co.jp','1223'),
-	(3, 'Armando', 'Tyce', '825-189-4448', 'atyce2@booking.com','1232'),
-	(4, 'Jephthah', 'Nazaret', '663-687-5318', 'jnazaret3@si.edu','1213'),
-	(5, 'Sophia', 'Pitceathly', '346-319-1983', 'spitceathly4@virginia.edu','12');
+	(1, 'John', 'Boyd', '555-555-5555', 'john.boyd@seattlecolleges.edu','123'),
+	(2, 'Joe', 'Shmo', '582-554-2989', 'joe.schmo@gmail.com','1234'),
+	(3, 'Armando', 'Tyce', '825-189-4448', 'armando.tyce@aol.com','1232'),
+	(4, 'Jephthah', 'Nazaret', '663-687-5318', 'jephthah.nazaret@hotmail.com','1213'),
+	(5, 'Sophia', 'Pitceathly', '346-319-1983', 'sophia.pitceathly@yahoo.com','1234');
 
 
 
