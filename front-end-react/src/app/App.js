@@ -12,15 +12,15 @@ import SignIn from '../components/signin/SignIn';
 import './App.css';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {apiResponse: [],
-  //     DataFromChild: false
-  //   };
-  // }
-  // myCallback = (isCorrectSignIn) => {// when the callback sent to SignIn is altered, it is now usable in the App
-  //   this.setState({ DataFromChild: isCorrectSignIn});
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {//apiResponse: [],
+      DataFromChild: null
+    };
+  }
+  myCallback = (signedInId) => {// when the callback sent to SignIn is altered, it is now usable in the App
+    this.setState({ DataFromChild: signedInId});
+  }
   // componentWillMount() { // we can add a handler instead of this biuld in function
   //   axios("http://localhost:9000/signin").then(res => this.setState({apiResponse: res.data}));
   // }
@@ -39,7 +39,7 @@ class App extends Component {
               <Route path="/carts/:id" component={Cart}/>
               <Route path="/help" component={Help}/>
               <Route path="/map" component={Map}/>
-              <Route path="/signin" component={SignIn}/>              
+              <Route path="/signin" component={SignIn}/>{/*render={SignIn, callbackFromParent = this.myCallback}/>*/}            
             </Switch>
           </div>
         </div>

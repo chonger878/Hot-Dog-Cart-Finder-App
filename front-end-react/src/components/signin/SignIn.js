@@ -10,12 +10,12 @@ class SignIn extends React.Component
     constructor(props) {
         super(props);
         this.state = {apiResponse: [],
-          //DataFromChild: false
+          //DataFromChild: null
         };
       }
-    //   myCallback = (isCorrectSignIn) => {// when the callback sent to SignIn is altered, it is now usable in the App
-    //     this.setState({ DataFromChild: isCorrectSignIn});
-    //   }
+      // myCallback = (signedInId) => {// when the callback sent to SignIn is altered, it is now usable in the App
+      //   this.setState({ DataFromChild: signedInId});
+      // }
     
       componentWillMount() { // we can add a handler instead of this biuld in function
         axios("http://localhost:9000/signin").then(res => this.setState({apiResponse: res.data}));
@@ -24,10 +24,10 @@ class SignIn extends React.Component
     //will validate if the user info matches our database
     //if valid then bring user to map page
     //??strange error with datatype conversion into validate. switches param order and turns databaseUsername to object
-    validate(databaseEmail, databasePassword, FirstName, LastName) {
+    validate(databaseEmail, databasePassword, FirstName, LastName, id) {
         let username = document.userData.user.value;
         let password = document.userData.pass.value;
-        //let isCorrectSignIn = false;
+        //let signedInId = null;
             //alert(databaseUsername);
             //alert(databasePassword);
             //if username is blank
@@ -43,8 +43,8 @@ class SignIn extends React.Component
                 alert("Login Successful, Hello "+ FirstName + " " + LastName);
                 
                 //go to main App component via callback
-                //isCorrectSignIn = true;
-                //this.props.callbackFromParent(isCorrectSignIn);
+                // signedInId = id;
+                // this.props.callbackFromParent(signedInId);
             }
             
             //else username does not match our database, redo sign in
@@ -81,7 +81,7 @@ class SignIn extends React.Component
                      <div>
                         {/*test database data is coming through*/}
                         {/* Email: {resource.Email} Password: {resource.Password} */}
-                        <input type="submit" value="Log In" name = "click" onClick = {this.validate.bind(this, resource.Email, resource.Password, resource.FirstName, resource.LastName)}/>   
+                        <input type="submit" value="Log In" name = "click" onClick = {this.validate.bind(this, resource.Email, resource.Password, resource.FirstName, resource.LastName, resource.id)}/>   
                         {/*sign up link*/}
                         <a href="/signup">Signup</a>
                     </div>
