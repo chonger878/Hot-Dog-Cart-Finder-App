@@ -1,8 +1,13 @@
-.sign
-{
+.sign {
     width: 200px;
+    margin-top: 2rem;
 }
-.signInPage
-{
-    text-align: center;
+.signInPage {
+    display: inline-block;
+    width: 40%;
+    height: 60%;
+    position: fixed;
+    left: 11rem;
+    border: solid 10px brown;
+    border-radius: 20px;
 }

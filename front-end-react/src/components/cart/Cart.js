@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {Component} from 'react';
 // import './Cart.css'
 
 class Cart extends Component {
@@ -14,7 +14,6 @@ class Cart extends Component {
 
   render() {
     var cart = this.state.cart[0];
-console.log('jjj', cart)
     return (
       <div className="cart">
           <h1>{cart ? cart.FirstName : 'loading ....'}</h1>

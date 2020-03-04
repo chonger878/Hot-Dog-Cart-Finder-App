@@ -1,92 +1,66 @@
+import signInImage from '../media/logo.jpg';
 import React from 'react';
-import signInImage from '../media/stop-signin.jpg';
 import './SignInPage.css';
-import axios from 'axios';
+import _ from 'lodash'
 
-class SignIn extends React.Component
-{
+class SignIn extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {apiResponse: [],
-          //DataFromChild: false
+
+        this.state = {
+          apiResponse: []
         };
       }
-    //   myCallback = (isCorrectSignIn) => {// when the callback sent to SignIn is altered, it is now usable in the App
-    //     this.setState({ DataFromChild: isCorrectSignIn});
-    //   }
-      componentWillMount() { // we can add a handler instead of this biuld in function
-        axios("http://localhost:9000/signin").then(res => this.setState({apiResponse: res.data}));
-      }
 
-    //will validate if the user info matches our database
-    //if valid then bring user to map page
-    //??strange error with datatype conversion into validate. switches param order and turns databaseUsername to object
-    validate(databaseUsername, databasePassword) {
+    componentDidMount() {
+      fetch("/signin").then(res => res.json()).then(users => this.setState({apiResponse: users}));
+    }
+
+    validate() {
+      if (this.state.apiResponse.length > 0) {
         let username = document.userData.user.value;
         let password = document.userData.pass.value;
-        //let isCorrectSignIn = false;
-            //alert(databaseUsername);
-            //alert(databasePassword);
-            //if username is blank
-            if (username === "" || password === "")
-            {
-                alert("Field cannot be blank");
-            }
+  
+        if (username === "" || password === "") {
+            alert("Field cannot be blank");
+        }
+        else {  
+          var allUsers = this.state.apiResponse;
+  
+          var user = allUsers.find(user => user.Email === username && user.Password === password);
+          if (user) {
+            alert("Login Successful, Hello "+ user.FirstName + " " + user.LastName);
+  
+            this.props.history.push(`/${user.type}`);
+  
+            window.location.reload(true);
 
-            /*sign in is valid go to map
-            matches the user information with data in our database*/
-            else if (username === databaseUsername) //&& password === databasePassword)
-            {
-                alert("login successful");
-                //go to main App component via callback
-                //isCorrectSignIn = true;
-                //this.props.callbackFromParent(isCorrectSignIn);
-            }
-            
-            //else username does not match our database, redo sign in
-            else
-            {
-                alert("Incorrect sign in");
-            }
-         
+            this.props.user(_.join([user.FirstName, user.LastName], ', '))
+          }
+          else {
+            alert("Sign in does not match our records");
+          }
+        }
+      }
     }
-    //code fragment to grab data from database
-    // {this.state.apiResponse.map(resource => (
-    //     <div>
-    //     Email: {resource.Email} Password: {resource.Password}
-    //     <SignIn callbackFromParent={this.myCallback} user={resource.Email} pass={resource.Password}/> 
-    //     </div>
-    //   ))}
-    render()
-    {
-        return(
-            <div className = "signInPage">
-               
-               {/*sign in image*/}
-               <img src = {signInImage} className = "sign"/>
 
-               {/*form to input user info and call validate function*/}
-               <form name = "userData"> 
+  render() {
+    return(
+      <div className = "signInPage">
+        <img src = {signInImage} className = "sign" alt="loading"/>
+        <form name = "userData"> 
+          Username: <input type="text" name = "user"/>
+          Password: <input type="text" name = "pass" />
 
-                  Username: <input type="text" name = "user"/>
-                  Password: <input type="text" name = "pass" />
-
-                 {/*onClick syntax this.function.bind(this)*/} 
-                 {/* <input type="submit" value="Log In" name = "click" onClick = {this.validate.bind(this)}/> */}
-                 {this.state.apiResponse.map(resource => ( 
-                     <div>
-                        {/*test database data is coming through*/}
-                        {/* Email: {resource.Email} Password: {resource.Password} */}
-                        <input type="submit" value="Log In" name = "click" onClick = {this.validate.bind(resource.Email, resource.Password)}/>   
-                        {/*sign up link*/}
-                        <a href="/signup">Signup</a>
-                    </div>
-                 ))}
-               </form>
-               
-            </div>
-        );
-    }
+          <div>
+            <input type="submit"  value="Log In"  name = "click"  onClick = {this.validate.bind(this)} /> 
+                        
+            {/* <a href="/signup">Signup</a> */}
+          </div>
+        </form> 
+      </div>
+    );
+  }
 }
 
 export default SignIn;

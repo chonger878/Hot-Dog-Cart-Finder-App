@@ -12,7 +12,8 @@ router.get('/carts', function(req, res, next) {
       FirstName: row.FirstName, 
       LastName: row.LastName, 
       Phone: row.Phone,
-      Email: row.email,
+      Email: row.Email,
+      Email: row.Location,
       coords: row.coords,
       iconImage: row.iconImage,
       content: row.content
@@ -22,7 +23,7 @@ router.get('/carts', function(req, res, next) {
   });
 });
 
-router.get('/carts/:id', function(req, res, next) {
+router.get('/admin/carts/:id', function(req, res, next) {
   db.query(`SELECT * FROM vendors WHERE VendorID = ${req.params.id}`, (err,rows) => {
     if(err) throw err;
     var resource = rows.map(row => ({
@@ -30,7 +31,7 @@ router.get('/carts/:id', function(req, res, next) {
       FirstName: row.FirstName, 
       LastName: row.LastName, 
       Phone: row.Phone,
-      Email: row.email,
+      Email: row.Email,
       coords: row.coords,
       iconImage: row.iconImage,
       content: row.content
@@ -38,6 +39,23 @@ router.get('/carts/:id', function(req, res, next) {
 
     res.send(resource);
   });
+});
+
+router.get('/signin', (req, res, next) => {
+  db.query(`SELECT * FROM Signin`, (err,rows) => {
+    if(err) throw err;
+
+    var resource = rows.map(row => ({
+      id: row.SigninId,
+      type: row.Type, 
+      Email: row.Email,
+      Password: row.Password,
+      FirstName: row.FirstName, 
+      LastName: row.LastName
+    }));
+
+    res.send(resource);
+  });  
 });
 
 module.exports = router;
