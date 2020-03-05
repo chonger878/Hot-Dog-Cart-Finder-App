@@ -27,6 +27,7 @@ console.log(this.props.history)
                                 <li><a href="/admin/map">Map</a></li>
                                 <li><a href="/admin/help">Help</a></li>
                                 <li><a href="/signin">Log Out</a></li>
+                                <li><a href="/signup">Signup</a></li>
                             </ul>
                         </nav>
                         <div className="identification">
@@ -48,6 +49,7 @@ console.log(this.props.history)
                                 <li><a href="/customer/map">Map</a></li>
                                 <li><a href="/customer/help">Help</a></li>
                                 <li><a href="/signin">Log Out</a></li>
+                                <li><a href="/signup">Signup</a></li>
                             </ul>
                         </nav>
                         <div className="identification">
@@ -68,6 +70,7 @@ console.log(this.props.history)
                                 <li><a href="/vendor/contact">Contact</a></li>
                                 <li><a href="/vendor/help">Help</a></li>
                                 <li><a href="/signin">Log Out</a></li>
+                                <li><a href="/signup">Signup</a></li>
                             </ul>
                         </nav>
                         <div className="identification">
@@ -88,6 +91,7 @@ console.log(this.props.history)
                         <li><a href="/map">Map</a></li>
                         <li><a href="/help">Help</a></li>
                         <li><a href="/signin">SignIn</a></li>
+                        <li><a href="/signup">Signup</a></li>
                         </ul>
                     </nav>
                 ) 

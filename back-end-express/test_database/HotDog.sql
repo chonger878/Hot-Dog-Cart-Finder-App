@@ -256,12 +256,12 @@ DROP TABLE IF EXISTS Signin;
 
 CREATE TABLE IF NOT EXISTS Signin(
   `SigninId`     INT         NOT NULL,
-  `Permission`   char(10)    not Null,  
-  `Type` VARCHAR(45) NOT NULL,
-  `Email` VARCHAR(45) NOT NULL,
-  `Password` VARCHAR(4) NOT NULL,
-  `FirstName`  VARCHAR(45) NOT NULL,
-  `LastName`   VARCHAR(45) NOT NULL,
+  `Permission`   CHAR(10)    NOT NULL,  
+  `Type`         VARCHAR(45) NOT NULL,
+  `Email`        VARCHAR(45) NOT NULL,
+  `Password`     VARCHAR(4)  NOT NULL,
+  `FirstName`    VARCHAR(45) NOT NULL,
+  `LastName`     VARCHAR(45) NOT NULL,
 
   PRIMARY KEY (SigninId));
 -- -----------------------------------------------------
