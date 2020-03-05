@@ -6,10 +6,35 @@
 .SignUp
 {
     display: inline-block;
-    width: 40%;
-    height: 60%;
+    width: 50%;
+    height: 80%;
     position: fixed;
     left: 11rem;
     border: solid 10px brown;
     border-radius: 20px;    
 }
+
+input[type=text], select {
+    width: 50%;
+    padding: 5px 10px;
+    margin: 2px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }

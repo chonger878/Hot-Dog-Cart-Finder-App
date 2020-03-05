@@ -9,13 +9,13 @@
 	JOIN Orders USING(CustomerID)
 WHERE CustomerID > 2;
 */
-
+SELECT * FROM Signin;
 -- -----------------------------------------------------
 -- Schema
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS hotDog;
 CREATE SCHEMA IF NOT EXISTS hotDog;
-USE hotDog ;
+USE hotDog;
 
 -- -----------------------------------------------------
 -- Table Customers
@@ -36,8 +36,8 @@ CREATE TABLE IF NOT EXISTS Customers(
 -- -----------------------------------------------------
 INSERT INTO Customers VALUES
 	(1, 'John', 'Boyd', '555-555-5555', 'john.boyd@seattlecolleges.edu','123'),
-  (2, 'Joe', 'Shmo', '582-554-2989', 'joe.schmo@gmail.com','1234'),
-  (3, 'Armando', 'Tyce', '825-189-4448', 'armando.tyce@aol.com','1232'),
+    (2, 'Joe', 'Shmo', '582-554-2989', 'joe.schmo@gmail.com','1234'),
+    (3, 'Armando', 'Tyce', '825-189-4448', 'armando.tyce@aol.com','1232'),
 	(4, 'Jephthah', 'Nazaret', '663-687-5318', 'jephthah.nazaret@hotmail.com','1213'),
 	(5, 'Sophia', 'Pitceathly', '346-319-1983', 'sophia.pitceathly@yahoo.com','1234');
 
@@ -234,8 +234,8 @@ DROP TABLE IF EXISTS Admins;
 CREATE TABLE IF NOT EXISTS Admins(
   `AdminID`     INT         NOT NULL,
   `Permissions` VARCHAR(45) NOT NULL,
-  `Email` VARCHAR(45) NOT NULL,
-  `Password` VARCHAR(4) NOT NULL,
+  `Email`       VARCHAR(45) NOT NULL,
+  `Password`    VARCHAR(4) NOT NULL,
 
   PRIMARY KEY (AdminID));
 -- -----------------------------------------------------
@@ -244,9 +244,9 @@ CREATE TABLE IF NOT EXISTS Admins(
 INSERT INTO Admins VALUES
 	(1,'None', 'farhad', '123'),
 	(2,'None', 'adam', '111'),
-  (3,'None', 'nick', '1111'),
-  (4,'None', 'sarah', '1122'),
-  (5,'None', 'farhad', '2222');
+    (3,'None', 'nick', '1111'),
+    (4,'None', 'sarah', '1122'),
+    (5,'None', 'farhad', '2222');
 
 
 -- -----------------------------------------------------
@@ -270,11 +270,11 @@ CREATE TABLE IF NOT EXISTS Signin(
 INSERT INTO Signin VALUES
 	(1,'None', 'customer', 'john.boyd@seattlecolleges.edu','123', 'John', 'Boyd'),
 	(2,'None', 'customer', 'joe.schmo@gmail.com','1234', 'Joe', 'Shmo'),
-  (3,'None', 'customer', 'armando.tyce@aol.com','1232', 'Armando', 'Tyce'),
-  (4,'None', 'customer', 'jephthah.nazaret@hotmail.com','1213', 'Jephthah', 'Nazaret'),
-  (5,'None', 'customer', 'sophia.pitceathly@yahoo.com','1234', 'Sophia', 'Pitceathly'),
-  (6,'None', 'admin', 'farhad', '123', 'farhad', 'bahrehmand'),
+    (3,'None', 'customer', 'armando.tyce@aol.com','1232', 'Armando', 'Tyce'),
+    (4,'None', 'customer', 'jephthah.nazaret@hotmail.com','1213', 'Jephthah', 'Nazaret'),
+    (5,'None', 'customer', 'sophia.pitceathly@yahoo.com','1234', 'Sophia', 'Pitceathly'),
+    (6,'None', 'admin', 'farhad', '123', 'farhad', 'bahrehmand'),
 	(7,'None', 'admin', 'adam', '111', 'adam', 'adam'),
-  (8,'None', 'admin', 'jones', '1111', 'jones', 'jones'),
-  (9,'None', 'admin', 'dan', '1122', 'dan','dan'),
-  (10,'None', 'admin', 'sarah', '2222', 'sarah', 'sarah');
+    (8,'None', 'admin', 'jones', '1111', 'jones', 'jones'),
+    (9,'None', 'admin', 'dan', '1122', 'dan','dan'),
+    (10,'None', 'admin', 'sarah', '2222', 'sarah', 'sarah');
