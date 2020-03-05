@@ -1,0 +1,14 @@
+.OverallDiv {
+    border: 10px solid brown;
+    border-radius: 20px;
+    margin-left: 12em;
+    height: 30em;
+}
+
+.header {
+    color: brown;
+}
+
+.statement {
+    padding: 2em;
+}

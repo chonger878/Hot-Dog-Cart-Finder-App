@@ -1,0 +1,14 @@
+.help {
+    border: 10px solid brown;
+    border-radius: 20px;
+    margin-left: 12em;
+    height: 20em;
+    padding: 40px;
+}
+
+.theList {
+    text-align: left;
+}
+.faq {
+    padding: 20px;
+}

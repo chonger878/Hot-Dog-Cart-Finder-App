@@ -60,9 +60,9 @@ class MapContainer extends Component {
         <div className={`${this.state.isCartSelected}`}>
         <button id="closeButton" onClick={() => this.onCloseButtonClick()}>close</button>
           <div className = "cartInfo">
-            <h3>cart number: {this.state.selectedCart.content}</h3>
             <h3> {this.state.selectedCart.content}</h3>
             <p>{this.state.selectedCart.FirstName} {this.state.selectedCart.LastName}</p>
+            <p>Hours: {this.state.selectedCart.DaysAWeek}</p>
             <p>Phone: {this.state.selectedCart.Phone}</p>
             <p>Email: {this.state.selectedCart.Email}</p>
             <p>Location: {this.state.selectedCart.Location}</p>
@@ -76,5 +76,12 @@ class MapContainer extends Component {
 export default GoogleApiWrapper ({
   // https://console.cloud.google.com/google/maps-apis/apis/maps-embed-backend.googleapis.com/metrics?project=ad320-269405
   // apiKey: 'AIzaSyCJWUOedbDU0sEJpDAd_mZ93qSoPzpIFIw&libraries=places&callback=initMap'
-  apiKey: 'AIzaSyCZ_DeGWRaw9b0ptA2vUJy55AlLcsF2KHE'
+
+  //The API key used below is the one Bob set up for the class, set to expire at the end of 
+  //the quarter. The old one (set up by Farhad I think?) is pasted into the comment at the 
+  //bottom of this file.
+  apiKey: 'AIzaSyDEsKpLXZJY-Ch3s_UN152D7btqc7HOocQ'
 })(MapContainer);
+
+
+//AIzaSyCZ_DeGWRaw9b0ptA2vUJy55AlLcsF2KHE
