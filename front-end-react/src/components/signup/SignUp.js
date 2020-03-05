@@ -50,27 +50,46 @@ class SignUp extends React.Component {
     //      })
     //  }  
     
-     handleSubmit(e) {
+    //  handleSubmit(e) {
+    //      e.preventDefault();
+    //      var self = this;
+    //      fetch('/signup',{
+    //          method: 'POST',
+    //          data: {
+    //              SigninId: self.refs.SigninId,
+    //              Permission: self.refs.Permission,
+    //              Type: self.refs.Type,
+    //              Email: self.refs.Email,
+    //              Password: self.refs.Password,
+    //              FirstName: self.refs.FirstName,
+    //              LastName: self.refs.LastName
+    //          }
+    //      })
+    //      .then(function(response){
+    //          return response.json()
+    //      }).then(function(body){
+    //          console.log(body);
+    //      });
+    //     }
+    handleSubmit(e) {
          e.preventDefault();
-         var self = this;
-         fetch('/signup',{
-             method: 'POST',
-             data: {
-                 SigninId: self.refs.SigninId,
-                 Permission: self.refs.Permission,
-                 Type: self.refs.Type,
-                 Email: self.refs.Email,
-                 Password: self.refs.Password,
-                 FirstName: self.refs.FirstName,
-                 LastName: self.refs.LastName
-             }
-         })
-         .then(function(response){
-             return response.json()
-         }).then(function(body){
-             console.log(body);
-         });
-        }
+         var self = this;    
+        fetch('/signup', {
+          method: 'POST',
+          headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            SigninId: self.refs.SigninId.value,
+            Permission: self.refs.Permission.value,
+            Type: self.refs.Type.value,
+            Email: self.refs.Email.value,
+            Password: self.refs.Password.value,
+            FirstName: self.refs.FirstName.value,
+            LastName: self.refs.LastName.value
+          })
+      }).then(response => response.json()).then(body => console.log(body));}
         //  const user = {
         //    id: this.state.id,
         //    Permission: this.state.Permission,
