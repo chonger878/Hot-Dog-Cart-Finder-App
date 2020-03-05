@@ -66,6 +66,11 @@ class MapContainer extends Component {
             <p>Phone: {this.state.selectedCart.Phone}</p>
             <p>Email: {this.state.selectedCart.Email}</p>
             <p>Location: {this.state.selectedCart.Location}</p>
+            <div className = 'menuDiv'>
+              <h2 className = 'vendorMenu'>Menu:</h2>
+              <p className = 'placeholder1'>blah</p>
+              <p className = 'placeholder2'>blah blah</p>
+            </div>
           </div>
         </div>
       </div>

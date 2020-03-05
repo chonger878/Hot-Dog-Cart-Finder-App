@@ -5,10 +5,12 @@
     height: 30em;
 }
 
-.header {
+.header2 {
     color: brown;
 }
 
 .statement {
+    width: 24em;
+    text-align: justify;
     padding: 2em;
 }

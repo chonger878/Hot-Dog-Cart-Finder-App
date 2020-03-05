@@ -4,8 +4,8 @@ import {Link} from "react-router-dom";
 
 var Home = () => {
     return (
-        <div className="home">
-            <h1>Welcome to Hot Dog Finder</h1>
+        <div className = "homeDiv">
+            <h1 className = 'welcomeMessage'>Welcome to Hot Dog Finder!</h1>
 
 
         </div>

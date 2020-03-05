@@ -17,8 +17,17 @@
     height: 77%;
     position: fixed;
     right: 1rem;
+    text-align: center;
     border: solid 10px brown;
     border-radius: 20px;
+}
+
+.menuDiv {
+    margin: 0 auto;
+    border: solid 10px brown;
+    border-radius: 20px;
+    width: 80%;
+    height: 100%;
 }
 
 .false {

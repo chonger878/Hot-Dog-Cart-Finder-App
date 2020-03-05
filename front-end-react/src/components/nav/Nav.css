@@ -29,29 +29,3 @@
   .nav-links li{
     padding: 0.2rem 0.5rem;
 }
-
-/* .help {
-  position: fixed;
-  top: 5rem;
-} */
-
-h1 {
-  /* padding-left: 9rem; */
-  color: brown;
-}
-
-ul {
-  padding-left: 5rem;
-  list-style: none;
-  color: brown;
-}
-
-p {
-  /* margin-left: 12em; */
-  /* margin-right: auto; */
-  width: 24em;
-  text-align: justify;
-  /* padding: 2em; */
-  /* border: 10px solid brown; */
-}
-

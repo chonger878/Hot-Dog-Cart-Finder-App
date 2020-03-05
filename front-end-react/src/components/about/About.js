@@ -7,10 +7,10 @@ var About = () => {
     return (
         <div className = "OverallDiv">
             <div className = "AboutHeader">
-                <h1 id = "header">About Us</h1>
+                <h1 className = "header2">About Us</h1>
             </div>
             <div className="AboutMainBlock">
-                <p id = "statement">
+                <p className = "statement">
                     We here at Hot Dog Finder believe that a good dog is hard to find. That's where
                     we come in; with our cutting-edge web technology, we find you the locations of 
                     Seattle's many Hot Dog Carts, and provide you with all the information you need
@@ -24,11 +24,3 @@ var About = () => {
 }
 
 export default About;
-
-// var About = props => {
-//     return (
-//         <div className="About">
-
-//         </div>
-//     )
-// }
