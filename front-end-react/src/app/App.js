@@ -9,43 +9,71 @@ import Carts from '../components/carts/Carts';
 import Help from '../components/help/Help';
 import Cart from '../components/cart/Cart';
 import SignIn from '../components/signin/SignIn';
+import _ from 'lodash';
+
+
 import './App.css';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {apiResponse: [],
-  //     DataFromChild: false
-  //   };
-  // }
-  // myCallback = (isCorrectSignIn) => {// when the callback sent to SignIn is altered, it is now usable in the App
-  //   this.setState({ DataFromChild: isCorrectSignIn});
-  // }
-  // componentWillMount() { // we can add a handler instead of this biuld in function
-  //   axios("http://localhost:9000/signin").then(res => this.setState({apiResponse: res.data}));
-  // }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      page: 'home',
+      user: ''
+    }
+
+    this.setUser = this.setUser.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      page: _.split(_.split(_.split(window.location.href, '/', 4), '?'), ',')[3],
+    })
+  }
+
+  setUser(user) {
+    this.setState({user});
+  }
+
   render() {
+    var text;
+    var {user} = this.state;
+
+    if (_.split(window.location.href, '/').length === 4 && this.state.page !== 'signin') {
+      if (this.state.page === 'admin') text = 'Admin Page';
+      else if (this.state.page === 'customer') text = 'Customer Page';
+      else if (this.state.page === 'vendor') text = 'Vendor Page';
+      else text = 'Please Sign in';
+    }
+    else {
+      text = "";
+    }
+
     return (
       <Router>
         <div className="App" style={{height: '100%'}}>
           <Header />
           <div className="App-content">
-            <Nav />
+            <Nav type={this.state.page} user={user}/>
+
+            <div className="page"><h1>{text}</h1></div>
             <Switch>
-              <Route path="/" exact component={Home}/>
-              <Route path="/about" component={About}/>
-              <Route path="/contact" component={Contact}/>
-              <Route path="/carts" exact component={Carts}/>
-              <Route path="/carts/:id" component={Cart}/>
-              <Route path="/help" component={Help}/>
-              <Route path="/map" component={Map}/>
-              <Route path="/signin" component={SignIn}/>              
+              <Route path="/(Home|admin/Home|customer/Home|vendor/home)" exact component={Home}/>
+              <Route path="/(about|admin/about|customer/about|vendor/about)" component={About}/>
+              <Route path="/(Contact|admin/Contact|customer/contact|vendor/contact)" component={Contact}/>
+              <Route path="/(carts|admin/carts|customer/carts)" exact component={Carts}/>
+              <Route path="/(carts/:id|admin/carts/:id|customer/carts/:id)" component={Cart}/>
+              <Route path="/(help|admin/help|customer/help|vendor/help)" component={Help}/>
+              <Route path="/(map|admin/map|customer/map|vendor/map)" component={Map}/>
+              <Route path="/signin" render={(props) => (<SignIn {...props} user={this.setUser}/>)}/>
+
             </Switch>
           </div>
         </div>
       </Router>
     );
-  }
+  }  
 }
 
 const Home = () => (

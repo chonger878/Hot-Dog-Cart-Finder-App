@@ -1,7 +1,15 @@
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 18vh;
+}
+
 .nav {
-    display: block;
+    display: flex;
     justify-content: space-around;
     flex-direction: column;
+    align-items: flex-start;
     background-color: transparent;
     position: fixed;
     border: 10px solid brown;
@@ -9,7 +17,7 @@
     left: 1rem;
     top: 4.4rem;
     margin-top: -10px;
-    height: 45vh;
+    height: auto;
     width: 15vh;
   }
 
@@ -20,18 +28,31 @@
     padding: 1rem 0.5rem;
   }
 
-  .nav-links a{
+.nav-links a{
       text-decoration: none;
       font-weight: bolder;
       color: brown  }
 
-  .nav-links li{
+.nav-links li{
     padding: 0.2rem 0.5rem;
+    width: 10vh;
+}
+
+.identification {
+  position: fixed;
+  top: 22rem;
+  border: 10px solid brown;
+  border-radius: 20px;
+  left: 1rem;
+  height: auto;
+  width: 15vh;
+
 }
 
 .help {
   position: fixed;
   top: 5rem;
+  left: 10rem;
 }
 
 h1 {

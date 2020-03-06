@@ -36,12 +36,10 @@ CREATE TABLE IF NOT EXISTS Customers(
 -- -----------------------------------------------------
 INSERT INTO Customers VALUES
 	(1, 'John', 'Boyd', '555-555-5555', 'john.boyd@seattlecolleges.edu','123'),
-	(2, 'Joe', 'Shmo', '582-554-2989', 'joe.schmo@gmail.com','1234'),
-	(3, 'Armando', 'Tyce', '825-189-4448', 'armando.tyce@aol.com','1232'),
+  (2, 'Joe', 'Shmo', '582-554-2989', 'joe.schmo@gmail.com','1234'),
+  (3, 'Armando', 'Tyce', '825-189-4448', 'armando.tyce@aol.com','1232'),
 	(4, 'Jephthah', 'Nazaret', '663-687-5318', 'jephthah.nazaret@hotmail.com','1213'),
 	(5, 'Sophia', 'Pitceathly', '346-319-1983', 'sophia.pitceathly@yahoo.com','1234');
-
-
 
 
 -- -----------------------------------------------------
@@ -229,21 +227,52 @@ INSERT INTO Menu_Item VALUES
 -- -----------------------------------------------------
 -- Table Admin
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS Admin;
+DROP TABLE IF EXISTS Admins;
 
-CREATE TABLE IF NOT EXISTS Admin(
+CREATE TABLE IF NOT EXISTS Admins(
   `AdminID`     INT         NOT NULL,
   `Permissions` VARCHAR(45) NOT NULL,
-  
+  `Email` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(4) NOT NULL,
+
   PRIMARY KEY (AdminID));
 -- -----------------------------------------------------
 -- Data Admin
 -- -----------------------------------------------------
-INSERT INTO Admin VALUES
-	(1,'None'),
-	(2,'None'),
-    (3,'None'),
-    (4,'None'),
-    (5,'None');
-    
+INSERT INTO Admins VALUES
+	(1,'None', 'farhad', '123'),
+	(2,'None', 'adam', '111'),
+  (3,'None', 'nick', '1111'),
+  (4,'None', 'sarah', '1122'),
+  (5,'None', 'farhad', '2222');
 
+
+-- -----------------------------------------------------
+-- Table Signin
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS Signin;
+
+CREATE TABLE IF NOT EXISTS Signin(
+  `SigninId`     INT         NOT NULL,
+  `Permission`   char(10)    not Null,  
+  `Type` VARCHAR(45) NOT NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(4) NOT NULL,
+  `FirstName`  VARCHAR(45) NOT NULL,
+  `LastName`   VARCHAR(45) NOT NULL,
+
+  PRIMARY KEY (SigninId));
+-- -----------------------------------------------------
+-- Data Admin
+-- -----------------------------------------------------
+INSERT INTO Signin VALUES
+	(1,'None', 'customer', 'john.boyd@seattlecolleges.edu','123', 'John', 'Boyd'),
+	(2,'None', 'customer', 'joe.schmo@gmail.com','1234', 'Joe', 'Shmo'),
+  (3,'None', 'customer', 'armando.tyce@aol.com','1232', 'Armando', 'Tyce'),
+  (4,'None', 'customer', 'jephthah.nazaret@hotmail.com','1213', 'Jephthah', 'Nazaret'),
+  (5,'None', 'customer', 'sophia.pitceathly@yahoo.com','1234', 'Sophia', 'Pitceathly'),
+  (6,'None', 'admin', 'farhad', '123', 'farhad', 'bahrehmand'),
+	(7,'None', 'admin', 'adam', '111', 'adam', 'adam'),
+  (8,'None', 'admin', 'jones', '1111', 'jones', 'jones'),
+  (9,'None', 'admin', 'dan', '1122', 'dan','dan'),
+  (10,'None', 'admin', 'sarah', '2222', 'sarah', 'sarah');

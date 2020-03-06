@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import './Carts.css'
 
@@ -18,7 +18,7 @@ class Carts extends Component {
         <div className="list">
           {this.state.carts.map(cart => (
             <Link to={`/carts/${cart.id}`}>
-              <div className="items">{cart.FirstName}</div>
+              <div className="items" key={cart.id}>{cart.FirstName}</div>
             </Link>
           ))}
         </div>

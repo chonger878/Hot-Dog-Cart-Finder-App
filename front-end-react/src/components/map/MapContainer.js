@@ -28,8 +28,6 @@ class MapContainer extends Component {
 
   addMarker = () => { // Davids's addMarker fn
     return this.state.carts.map((cart, index) => {
-      console.log(cart)
-
       return <Marker 
         key={index} 
         id={index} 
@@ -76,5 +74,5 @@ class MapContainer extends Component {
 export default GoogleApiWrapper ({
   // https://console.cloud.google.com/google/maps-apis/apis/maps-embed-backend.googleapis.com/metrics?project=ad320-269405
   // apiKey: 'AIzaSyCJWUOedbDU0sEJpDAd_mZ93qSoPzpIFIw&libraries=places&callback=initMap'
-  apiKey: 'AIzaSyCZ_DeGWRaw9b0ptA2vUJy55AlLcsF2KHE'
+  apiKey: 'AIzaSyDEsKpLXZJY-Ch3s_UN152D7btqc7HOocQ'
 })(MapContainer);
