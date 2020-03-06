@@ -42,8 +42,6 @@ INSERT INTO Customers VALUES
 	(5, 'Sophia', 'Pitceathly', '346-319-1983', 'sophia.pitceathly@yahoo.com','1234');
 
 
-
-
 -- -----------------------------------------------------
 -- Table Vendors
 -- -----------------------------------------------------

@@ -13,7 +13,7 @@ router.get('/carts', function(req, res, next) {
       LastName: row.LastName, 
       Phone: row.Phone,
       Email: row.Email,
-      Email: row.Location,
+      Location: row.Location,
       coords: row.coords,
       iconImage: row.iconImage,
       content: row.content
