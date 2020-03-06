@@ -75,6 +75,7 @@ router.get('/signin', (req, res, next) => {
       db.query(`INSERT INTO Signin SET ?`, data,(err, results) => {
         
         if(err) throw err;
+        res.send(results);
         res.end('Success');
       });
     });
