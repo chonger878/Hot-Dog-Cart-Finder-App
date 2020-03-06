@@ -81,7 +81,7 @@ class SignIn extends React.Component
           <div>
             <input type="submit"  value="Log In"  name = "click"  onClick = {this.validate.bind(this)} /> 
                         
-            {/* <a href="/signup">Signup</a> */}
+            <a href="/signup">Signup</a>
           </div>
         </form> 
       </div>
