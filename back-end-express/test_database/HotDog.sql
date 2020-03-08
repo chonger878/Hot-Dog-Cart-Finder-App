@@ -9,7 +9,6 @@
 	JOIN Orders USING(CustomerID)
 WHERE CustomerID > 2;
 */
-SELECT * FROM Signin;
 -- -----------------------------------------------------
 -- Schema
 -- -----------------------------------------------------
