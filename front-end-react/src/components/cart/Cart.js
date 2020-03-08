@@ -14,6 +14,7 @@ class Cart extends Component {
 
   render() {
     var cart = this.state.cart[0];
+    
     return (
       <div className="cart">
           <h1>{cart ? cart.FirstName : 'loading ....'}</h1>

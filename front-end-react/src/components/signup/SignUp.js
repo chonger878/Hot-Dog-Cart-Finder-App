@@ -43,7 +43,8 @@ class SignUp extends React.Component {
             FirstName: self.refs.FirstName.value,
             LastName: self.refs.LastName.value
           })
-      }).then(response => response.json()).then(body => console.log(body));}     
+      }).then(response => response.json()).then(body => console.log(body));
+    }     
       
      render() {
        return (

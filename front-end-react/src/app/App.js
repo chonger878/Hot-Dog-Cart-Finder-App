@@ -41,7 +41,7 @@ class App extends Component {
     var text;
     var {user} = this.state;
 
-    if (_.split(window.location.href, '/').length === 4 && this.state.page !== 'signin') {
+    if (_.split(window.location.href, '/').length === 4 && !_.includes(['signin', 'signup', 'help'], this.state.page)) {
       if (this.state.page === 'admin') text = 'Admin Page';
       else if (this.state.page === 'customer') text = 'Customer Page';
       else if (this.state.page === 'vendor') text = 'Vendor Page';
@@ -69,8 +69,6 @@ class App extends Component {
               <Route path="/(map|admin/map|customer/map|vendor/map)" component={Map}/>
               <Route path="/signup" component={SignUp}/>
               <Route path="/signin" render={(props) => (<SignIn {...props} user={this.setUser}/>)}/>
-              
-
             </Switch>
           </div>
         </div>

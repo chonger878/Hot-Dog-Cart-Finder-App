@@ -36,8 +36,8 @@ CREATE TABLE IF NOT EXISTS Customers(
 -- -----------------------------------------------------
 INSERT INTO Customers VALUES
 	(1, 'John', 'Boyd', '555-555-5555', 'john.boyd@seattlecolleges.edu','123'),
-    (2, 'Joe', 'Shmo', '582-554-2989', 'joe.schmo@gmail.com','1234'),
-    (3, 'Armando', 'Tyce', '825-189-4448', 'armando.tyce@aol.com','1232'),
+  (2, 'Joe', 'Shmo', '582-554-2989', 'joe.schmo@gmail.com','1234'),
+  (3, 'Armando', 'Tyce', '825-189-4448', 'armando.tyce@aol.com','1232'),
 	(4, 'Jephthah', 'Nazaret', '663-687-5318', 'jephthah.nazaret@hotmail.com','1213'),
 	(5, 'Sophia', 'Pitceathly', '346-319-1983', 'sophia.pitceathly@yahoo.com','1234');
 
@@ -48,19 +48,19 @@ INSERT INTO Customers VALUES
 DROP TABLE IF EXISTS Vendors;
 
 CREATE TABLE IF NOT EXISTS Vendors(
-  `VendorID`      INT 		  NOT NULL,
-  `StartTime`     TIME        NOT NULL,
-  `EndTime`       TIME        NOT NULL,
-  `DaysAWeek`     SET('Sn','M','T','W','Th','F','S')  NOT NULL,
+  `VendorID`      INT 		  NOT NULL auto_increment,
+  `StartTime`     TIME        NULL,
+  `EndTime`       TIME        NULL,
+  `DaysAWeek`     SET('Sn','M','T','W','Th','F','S') NULL,
   `FirstName`     VARCHAR(45) NOT NULL,
   `LastName`      VARCHAR(45) NOT NULL,
-  `Business`      VARCHAR(45) NOT NULL,
+  `Business`      VARCHAR(45) NULL,
   `Phone`         VARCHAR(45) NULL,
   `Location`      VARCHAR(45) NOT NULL,
   `Email`         VARCHAR(45) NULL,
   `coords`        JSON,
-  `iconImage`     VARCHAR(300),
-  `content`       VARCHAR(45), 
+  `iconImage`     VARCHAR(300) NULL,
+  `content`       VARCHAR(45) NULL, 
   
   PRIMARY KEY (VendorID));
 -- -----------------------------------------------------
@@ -128,8 +128,6 @@ INSERT INTO Orders VALUES
 	(4, 'Y', '3', '5', '2019/04/19', '5'),
 	(5, 'N', '1', '4', '2020/01/23', '3');
 
-
-
 -- -----------------------------------------------------
 -- Table Order_Items
 -- -----------------------------------------------------
@@ -161,7 +159,6 @@ INSERT INTO Order_Items VALUES
 	('1', '4'),
 	('5', '3'),
 	('3', '2');
-    
     
 -- -----------------------------------------------------
 -- Table Menu
@@ -268,11 +265,11 @@ CREATE TABLE IF NOT EXISTS Signin(
 INSERT INTO Signin VALUES
 	(1,'None', 'customer', 'john.boyd@seattlecolleges.edu','123', 'John', 'Boyd'),
 	(2,'None', 'customer', 'joe.schmo@gmail.com','1234', 'Joe', 'Shmo'),
-    (3,'None', 'customer', 'armando.tyce@aol.com','1232', 'Armando', 'Tyce'),
-    (4,'None', 'customer', 'jephthah.nazaret@hotmail.com','1213', 'Jephthah', 'Nazaret'),
-    (5,'None', 'customer', 'sophia.pitceathly@yahoo.com','1234', 'Sophia', 'Pitceathly'),
-    (6,'None', 'admin', 'farhad', '123', 'farhad', 'bahrehmand'),
-	(7,'None', 'admin', 'adam', '111', 'adam', 'adam'),
-    (8,'None', 'admin', 'jones', '1111', 'jones', 'jones'),
-    (9,'None', 'admin', 'dan', '1122', 'dan','dan'),
-    (10,'None', 'admin', 'sarah', '2222', 'sarah', 'sarah');
+  (3,'None', 'customer', 'armando.tyce@aol.com','1232', 'Armando', 'Tyce'),
+  (4,'None', 'customer', 'jephthah.nazaret@hotmail.com','1213', 'Jephthah', 'Nazaret'),
+  (5,'None', 'customer', 'sophia.pitceathly@yahoo.com','1234', 'Sophia', 'Pitceathly'),
+  (6,'None', 'admin', 'farhad', '123', 'farhad', 'bahrehmand'),
+  (7,'None', 'admin', 'adam', '111', 'adam', 'adam'),
+  (8,'None', 'admin', 'jones', '1111', 'jones', 'jones'),
+  (9,'None', 'admin', 'dan', '1122', 'dan','dan'),
+  (10,'None', 'admin', 'sarah', '2222', 'sarah', 'sarah');

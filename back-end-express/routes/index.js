@@ -4,7 +4,7 @@ var db = require('./db');
 
 /* GET users listing. */
 router.get('/carts', function(req, res, next) {
-  db.query(`SELECT * FROM vendors`, (err,rows) => {
+  db.query(`SELECT * FROM Vendors`, (err,rows) => {
     if(err) throw err;
 
     var resource = rows.map(row => ({
@@ -45,7 +45,7 @@ router.get('/admin/carts/:id', function(req, res, next) {
 router.get('/signin', (req, res, next) => {
   db.query(`SELECT * FROM Signin`, (err,rows) => {
     if(err) throw err;
-    console.log(rows);
+
     var resource = rows.map(row => ({
       id: row.SigninId,
       type: row.Type, 
@@ -59,25 +59,55 @@ router.get('/signin', (req, res, next) => {
   });  
 });
 
-    //route for signup inserting data to Signin table
-    router.post('/signup',(req, res) => {
-      var data = {
-        SigninId: req.body.SigninId, 
-        Permission: req.body.Permission,
-        Type: req.body.Type, 
-        Email: req.body.Email, 
-        Password: req.body.Password, 
-        FirstName: req.body.FirstName, 
-        LastName: req.body.LastName
-       };
-       
-      let sql = `INSERT INTO Signin SET ?`;
-      db.query(`INSERT INTO Signin SET ?`, data,(err, results) => {
-        
-        if(err) throw err;
-        res.send(results);
-        res.end('Success');
-      });
+  //route for signup inserting data to Signin table
+  router.post('/signup',(req, res) => {
+    var data = {
+      SigninId: req.body.SigninId, 
+      Permission: req.body.Permission,
+      Type: req.body.Type, 
+      Email: req.body.Email, 
+      Password: req.body.Password, 
+      FirstName: req.body.FirstName, 
+      LastName: req.body.LastName
+      };
+      
+    db.query(`INSERT INTO Signin SET ?`, data,(err, results) => {
+      
+      if(err) throw err;
+      res.send(results);
+      res.end('Success');
     });
+  });
+
+  router.delete('/carts/:id',(req, res) => {
+    var id = req.body.VendorID;
+
+    db.query(`DELETE FROM Vendors WHERE VendorID = ${id};`, (err, results) => {
+      
+      if(err) throw err;
+
+      res.send(results);
+      res.end('Success');
+    });
+  });
+
+  router.post('/carts', (req, res) => {
+    var data = {
+      FirstName: req.body.firstName, 
+      LastName: req.body.lastName,
+      Phone: req.body.phone, 
+      Email: req.body.email, 
+      Location: req.body.location,
+      content: req.body.content,
+      coords: req.body.coords
+      };
+      console.log(data)
+    db.query(`INSERT INTO Vendors SET ?`, data,(err, results) => {
+      
+      if(err) throw err;
+      res.send(results);
+      res.end('Success');
+    });
+  });
 
 module.exports = router;
