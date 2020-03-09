@@ -31,7 +31,8 @@
 .nav-links a{
       text-decoration: none;
       font-weight: bolder;
-      color: brown  }
+      color: brown;
+  }
 
 .nav-links li{
     padding: 0.2rem 0.5rem;

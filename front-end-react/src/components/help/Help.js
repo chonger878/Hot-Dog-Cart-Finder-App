@@ -1,13 +1,17 @@
 import React from 'react';
+import {Link} from "react-router-dom";
+
+import './Help.css'
+
 
 var Help = () => {
     return (
         <div className="help">
             <h1>Help menu</h1>
-            <ul>
-                <li><a href="/help/1">FAQ</a></li>
-                <li><a href="/help/2">FAQ</a></li>
-                <li><a href="/help/3">FAQ</a></li>
+            <ul className = "theList">
+                <li className = "faq"><a href="/help/FAQ">FAQ</a></li>
+                <li className = 'wtf'><a href="/help/WTF">WTF</a></li>
+                <li className = 'srsly'><a href="/help/FoReals">Srsly</a></li>
             </ul>
 
         </div>
