@@ -24,6 +24,8 @@ class Nav extends React.Component {
                                 <li><a href="/admin/about">About</a></li>
                                 <li><a href="/admin/contact">Contact</a></li>
                                 <li><a href="/admin/carts">Carts</a></li>
+                                <li><a href="/admin/customers">Customers</a></li>
+                                <li><a href="/admin/orders">Orders</a></li>
                                 <li><a href="/admin/map">Map</a></li>
                                 <li><a href="/admin/help">Help</a></li>
                                 <li><a href="/signin">Log Out</a></li>

@@ -22,12 +22,12 @@ USE hotDog;
 DROP TABLE IF EXISTS Customers;
 
 CREATE TABLE IF NOT EXISTS Customers(
-  `CustomerID` INT 		   NOT NULL,
+  `CustomerID` INT 		   NOT NULL auto_increment,
   `FirstName`  VARCHAR(45) NOT NULL,
   `LastName`   VARCHAR(45) NOT NULL,
   `Phone`      VARCHAR(45) NOT NULL,
   `Email`      VARCHAR(45) NOT NULL,
-  `Password`   VARCHAR(45) NOT NULL,
+  `Password`   VARCHAR(45) NULL,
   
   PRIMARY KEY (CustomerID));
 -- -----------------------------------------------------

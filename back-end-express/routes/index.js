@@ -23,6 +23,22 @@ router.get('/carts', function(req, res, next) {
   });
 });
 
+router.get('/customers', function(req, res, next) {
+  db.query(`SELECT * FROM Customers`, (err,rows) => {
+    if(err) throw err;
+
+    var resource = rows.map(row => ({
+      id: row.CustomerID,
+      FirstName: row.FirstName, 
+      LastName: row.LastName, 
+      Phone: row.Phone,
+      Email: row.Email,
+    }));
+
+    res.send(resource);
+  });
+});
+
 router.get('/admin/carts/:id', function(req, res, next) {
   db.query(`SELECT * FROM vendors WHERE VendorID = ${req.params.id}`, (err,rows) => {
     if(err) throw err;
@@ -91,6 +107,18 @@ router.get('/signin', (req, res, next) => {
     });
   });
 
+  router.delete('/customers/:id',(req, res) => {
+    var id = req.body.CustomerId;
+
+    db.query(`DELETE FROM Customers WHERE CustomerId = ${id};`, (err, results) => {
+      
+      if(err) throw err;
+
+      res.send(results);
+      res.end('Success');
+    });
+  });
+
   router.post('/carts', (req, res) => {
     var data = {
       FirstName: req.body.firstName, 
@@ -101,8 +129,24 @@ router.get('/signin', (req, res, next) => {
       content: req.body.content,
       coords: req.body.coords
       };
+
+      db.query(`INSERT INTO Vendors SET ?`, data,(err, results) => {
+      
+      if(err) throw err;
+      res.send(results);
+      res.end('Success');
+    });
+  });
+
+  router.post('/customers', (req, res) => {
+    var data = {
+      FirstName: req.body.firstName, 
+      LastName: req.body.lastName,
+      Phone: req.body.phone, 
+      Email: req.body.email, 
+      };
       console.log(data)
-    db.query(`INSERT INTO Vendors SET ?`, data,(err, results) => {
+    db.query(`INSERT INTO Customers SET ?`, data,(err, results) => {
       
       if(err) throw err;
       res.send(results);
