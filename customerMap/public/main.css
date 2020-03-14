@@ -1,0 +1,23 @@
+#map {
+    height: 500px;
+    width:  600px;
+    margin:auto;
+    border: solid 10px #F00;
+    border-radius: 20px;
+  }
+  
+  /* Optional: Makes the sample page fill the window. */
+
+  
+  html, body {
+    background-color:#ffffff;
+    height: 100vh;
+    margin: 0;
+    transition: all .2s ease-in;
+  }
+  #pageHeader{
+    text-align: center;
+    font-family: 'Fascinate', sans-serif;
+    color: #F00;
+  }
+  

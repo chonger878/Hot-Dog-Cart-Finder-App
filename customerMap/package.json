@@ -1,0 +1,25 @@
+{
+  "name": "ad320_teamproject_01",
+  "version": "1.0.0",
+  "description": "basic map for team project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "david",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
