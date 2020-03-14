@@ -1,43 +1,40 @@
-.customers {
-    display: table;
-    left: 5rem;
-    font-size: 15px;
-}
-
-.list{
-    list-style: none;
-    border: 1px solid brown;
-    border-radius: 20px;
-    display: block;
-    width: 900px;
-    font-weight: 50;
-}
-
-.items {
-    list-style: none;
-    margin: 1rem;
-    padding: 1rem;
-}
-
-.addCustomer {
-    display: inline;
-}
-
-.addCustomer label{
-    display: inline-block;
-    margin-right: 2rem;
-    min-width: 500px;
-}
-
-.addCustomer input{
-    max-width: 10rem;
-    right: 1rem;
-    margin-top: 1rem;
-}
-
-.addCostomercontainer {
+/* .customers-table {
     position: fixed;
-    text-align: left;
-    margin: 2rem;
-    width: 100px;
+    left: 20rem;
+    top: 10rem;
+    animation: 0.8s rotateIn ease;
+} */
+  
+#customers {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 100%;
+}
+  
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+#customers tr {
+    background-color: #f2f2f2;
+    font-size: 13px;
+}
+  
+#customers tr:hover {background-color: #ddd;}
+  
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgb(184, 193, 204);
+    color: white;
+}
+
+.add-customer {
+    position: fixed;
+    left: 15rem;
+    margin-top: 1rem;
 }

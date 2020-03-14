@@ -15,13 +15,50 @@ router.get('/carts', function(req, res, next) {
       Email: row.Email,
       Location: row.Location,
       coords: row.coords,
-      iconImage: row.iconImage,
+      // iconImage: row.iconImage,
       content: row.content
     }));
 
     res.send(resource);
   });
 });
+
+router.get('/orders', function(req, res, next) {
+  db.query(`SELECT * FROM Orders`, (err,rows) => {
+    if(err) throw err;
+
+    var resource = rows.map(row => ({
+      id: row.OrderID,
+      Status: row.Status, 
+      CartId: row.CartID, 
+      CustomerId: row.CustomerID,
+      OrderDate: row.OrderDate,
+      Items: row.Items,
+    }));
+
+    res.send(resource);
+  });
+});
+
+// TODO
+// router.post('/orders',(req, res) => {
+//   var data = {
+//     SigninId: req.body.SigninId, 
+//     Permission: req.body.Permission,
+//     Type: req.body.Type, 
+//     Email: req.body.Email, 
+//     Password: req.body.Password, 
+//     FirstName: req.body.FirstName, 
+//     LastName: req.body.LastName
+//     };
+    
+//   db.query(`INSERT INTO Signin SET ?`, data,(err, results) => {
+    
+//     if(err) throw err;
+//     res.send(results);
+//     res.end('Success');
+//   });
+// });
 
 router.get('/customers', function(req, res, next) {
   db.query(`SELECT * FROM Customers`, (err,rows) => {
@@ -49,7 +86,7 @@ router.get('/admin/carts/:id', function(req, res, next) {
       Phone: row.Phone,
       Email: row.Email,
       coords: row.coords,
-      iconImage: row.iconImage,
+      // iconImage: row.iconImage,
       content: row.content
     }));
 
@@ -107,8 +144,20 @@ router.get('/signin', (req, res, next) => {
     });
   });
 
+  router.delete('/orders/:id',(req, res) => {
+    var id = req.body.OrderID;
+
+    db.query(`DELETE FROM Orders WHERE OrderID = ${id};`, (err, results) => {
+      
+      if(err) throw err;
+
+      res.send(results);
+      res.end('Success');
+    });
+  });
+
   router.delete('/customers/:id',(req, res) => {
-    var id = req.body.CustomerId;
+    var id = req.body.CustomerID;
 
     db.query(`DELETE FROM Customers WHERE CustomerId = ${id};`, (err, results) => {
       
@@ -145,8 +194,8 @@ router.get('/signin', (req, res, next) => {
       Phone: req.body.phone, 
       Email: req.body.email, 
       };
-      console.log(data)
-    db.query(`INSERT INTO Customers SET ?`, data,(err, results) => {
+
+      db.query(`INSERT INTO Customers SET ?`, data,(err, results) => {
       
       if(err) throw err;
       res.send(results);

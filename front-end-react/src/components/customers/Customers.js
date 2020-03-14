@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import ReactTable from 'react-table-6';
-import 'react-table-6/react-table.css'
 import Popup from '../popup/Popup';  
 import _ from 'lodash';
 import './Customers.css'
@@ -18,7 +16,7 @@ class Customers extends Component {
     fetch("/customers").then(res => res.json()).then(customers => this.setState({customers: customers}));
   }
 
-  onDelete(id) {
+  delete(id) {
     fetch(`/customers/${id}`, {
       method: 'DELETE',
       headers: {
@@ -26,7 +24,7 @@ class Customers extends Component {
       'Content-Type': 'application/json',
       },
 
-      body: JSON.stringify({CustomerId: id})
+      body: JSON.stringify({CustomerID: id})
     }).then(response => response.json()).then(body => console.log(body));
 
     window.location.reload(true);
@@ -66,43 +64,64 @@ class Customers extends Component {
     }
   }
 
-  render() {
-    var columns = [
-      {Header: 'First Name', accessor: 'FirstName'},
-      {Header: 'Last Name', accessor: 'LastName'},
-      {Header: 'Phone', accessor: 'Phone', filterable: false},
-      {Header: 'Email', accessor: 'Email', filterable: false},
-      {Header: "", filterable: false,
-        Cell: props => {
-          return <button className="" onClick={() =>  this.onDelete(props.original.id)}>Delete</button>
-        }
-      },
-    ];
+  renderTableData() {
+    return this.state.customers.map((customer, index) => {
+       const {id, FirstName, LastName, Phone, Email} = customer
 
+       return (
+          <tr key={index}>
+            <td>{id}</td>
+            <td>{FirstName}</td>
+            <td>{LastName}</td>
+            <td>{Phone}</td>
+            <td>{Email}</td>
+            <td>
+              <button onClick={() =>  this.delete(id)}>X</button>
+              <button>UPDATE</button>
+            </td>
+
+          </tr>
+       )
+    })
+  }
+
+  renderTableHeader() {
+    let header = Object.keys(this.state.customers[0])
+    header.push('action');
+
+    return header.map((key, index) => {
+       return <th key={index}>{key.toUpperCase()}</th>
+    })
+  }
+
+ render() {
     var fields = ['First Name', 'Last Name', 'Phone', 'Email'];
 
     return (
-      <div className="customers">
-        <div className="list">
-          <ReactTable 
-          columns={columns}
-          data={this.state.customers}
-          filterable
-          defaultPageSize={6}
-          >
+       <div className="customers-table">
+          <table id='customers'>
+             <tbody>
+               {this.state.customers.length > 0 ? 
+                  <div>
+                    <tr>{this.renderTableHeader()}</tr>
+                    {this.renderTableData()}
+                  </div>
+                   : <h1>loading ....</h1>
+                }
 
-          </ReactTable>
-          <button onClick={this.togglePopup.bind(this)}>Add Customers</button>
+             </tbody>
+          </table>
+          <button className="add-customer" onClick={this.togglePopup.bind(this)}>+</button>
           {
           this.state.showPopup ?  
             <Popup  
               closePopup={this.togglePopup.bind(this)}  
               data= {
-                <div className="addCostomercontainer">
+                <div>
                   {fields.map((field, index) => (
-                      <div className="addCustomer" key={index}>
+                      <div className="addCart" key={index}>
                         <label>{field}:       </label>
-                        <input id={`${_.camelCase(field)}`} type="text" name={`${_.camelCase(field)}`} style={{width: 500}}/>
+                        <input id={`${_.camelCase(field)}`} type="text" name={`${_.camelCase(field)}`} style={{width: 370}}/>
                       </div>
                   ))}
                   <button style={{width: 50}} onClick={(e) => this.add(e)}>Add</button>
@@ -111,10 +130,9 @@ class Customers extends Component {
             />  
             : null  
           }  
-        </div>
-      </div>
-    );
-  }
+       </div>
+    )
+ }
 }
 
 export default Customers;

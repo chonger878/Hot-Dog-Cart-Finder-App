@@ -13,22 +13,20 @@
 .popup-button {
     position: relative;
     background-color: red;
-    left: 0;
-    border-radius: 20px;  
 }
 
-  .popupData {  
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start; 
-    position: absolute;  
-    left: 25%;  
-    right: 25%;  
-    top: 15%;  
-    bottom: 25%;  
-    margin: auto;  
-    border-radius: 20px;  
-    background: white;  
-    height: 500px;
-    width: 400px;
-  }
+.popupData {  
+  display: inline-block;
+  flex-direction: row;
+  align-items: flex-start; 
+  position: absolute;  
+  left: 25%;  
+  right: 25%;  
+  top: 15%;  
+  bottom: 25%;  
+  margin: auto;  
+  border-radius: 20px;  
+  background: white;  
+  height: 500px;
+  width: 400px;
+}

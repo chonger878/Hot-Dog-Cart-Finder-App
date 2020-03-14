@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import {Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 import './MapContainer.css'
-
-const style = {
-  maxWidth: '100%',
-  maxHeight: '100%',
-  margin: '0',
-  border: 'solid 10px brown',
-  borderRadius: '20px',
-  display: 'block',
-}
+import image from '../media/cart2.jpg';
 
 class MapContainer extends Component {
   constructor(props) {
@@ -49,7 +41,6 @@ class MapContainer extends Component {
           <Map
             google={this.props.google}
             zoom={15}
-            style={style}
             initialCenter={{lat: 47.6040, lng: -122.3250}}
           >
             {this.addMarker()}
@@ -58,13 +49,14 @@ class MapContainer extends Component {
         <div className={`${this.state.isCartSelected}`}>
         <button id="closeButton" onClick={() => this.onCloseButtonClick()}>close</button>
           <div className = "cartInfo">
-            <h3>cart number: {this.state.selectedCart.content}</h3>
             <h3> {this.state.selectedCart.content}</h3>
             <p>{this.state.selectedCart.FirstName} {this.state.selectedCart.LastName}</p>
             <p>Phone: {this.state.selectedCart.Phone}</p>
             <p>Email: {this.state.selectedCart.Email}</p>
             <p>Location: {this.state.selectedCart.Location}</p>
           </div>
+          <img className="cart-image" src={image} style={{width: 230, height: 230}}/>
+          <div className="cart-menu">menu</div>
         </div>
       </div>
     );

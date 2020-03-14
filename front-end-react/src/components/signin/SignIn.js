@@ -1,7 +1,7 @@
 import React from 'react';
 // import signInImage from '../media/profile-logo.png';
 import signInImage from '../media/hotdog-signin.jpg';
-import './SignInPage.css';
+import './SignIn.css';
 import _ from 'lodash'
 
 class SignIn extends React.Component {
@@ -49,15 +49,12 @@ class SignIn extends React.Component {
     return(
       <div className = "signInPage">
         <img src = {signInImage} className = "sign" alt="loading"/>
-        <form name = "userData"> 
-          Username: <input type="text" name = "user"/>
-          Password: <input type="password" name = "pass" />
-
-          <div>
-            <input type="submit"  value="Log In"  name = "click"  onClick = {this.validate.bind(this)} /> 
-                        
-            <a href="/signup">Signup</a>
-          </div>
+        <form name = "userData" className="userData"> 
+          <label for="username">Username: </label>
+          <input type="text" name = "user" id="signin-user" />
+          <label for="password">Password: </label>
+          <input type="password" name = "pass" id="signin-pass" />
+          <input type="submit"  value="Log In"  name = "click"  onClick = {this.validate.bind(this)} /> 
         </form> 
       </div>
     );

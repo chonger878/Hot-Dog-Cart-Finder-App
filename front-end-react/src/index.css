@@ -1,6 +1,7 @@
 html {
   height: 100%;
   width: 100%;
+  font-family: 'Indie+Flower', cursive;
 }
 
 body {
@@ -12,9 +13,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(255, 211, 129);
+  background-color: white;
   height: 100%;
   width: 100%;
+  font-family: 'Indie+Flower', cursive;
 }
 
 body > #root > div {

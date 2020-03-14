@@ -43,24 +43,12 @@ class App extends Component {
     var text;
     var {user} = this.state;
 
-    if (_.split(window.location.href, '/').length === 4 && !_.includes(['signin', 'signup', 'help'], this.state.page)) {
-      if (this.state.page === 'admin') text = 'Admin Page';
-      else if (this.state.page === 'customer') text = 'Customer Page';
-      else if (this.state.page === 'vendor') text = 'Vendor Page';
-      else text = 'Please Sign in';
-    }
-    else {
-      text = "";
-    }
-
     return (
       <Router>
         <div className="App" style={{height: '100%'}}>
           <Header />
           <div className="App-content">
             <Nav type={this.state.page} user={user}/>
-
-            <div className="page"><h1>{text}</h1></div>
             <Switch>
               <Route path="/(Home|admin/Home|customer/Home|vendor/home)" exact component={Home}/>
               <Route path="/(about|admin/about|customer/about|vendor/about)" component={About}/>

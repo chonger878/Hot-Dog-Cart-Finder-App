@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import ReactTable from 'react-table-6';
-import 'react-table-6/react-table.css'
 import Popup from '../popup/Popup';  
 import _ from 'lodash';
 import './Carts.css'
@@ -18,7 +16,8 @@ class Carts extends Component {
     fetch("/carts").then(res => res.json()).then(carts => this.setState({carts: carts}));
   }
 
-  onDelete(id) {
+  delete(id) {
+    console.log(id, this.props)
     fetch(`/carts/${id}`, {
       method: 'DELETE',
       headers: {
@@ -74,36 +73,56 @@ class Carts extends Component {
     }
   }
 
-  render() {
-    var columns = [
-      {Header: 'First Name', accessor: 'FirstName'},
-      {Header: 'Last Name', accessor: 'LastName'},
-      {Header: 'Phone', accessor: 'Phone', filterable: false},
-      {Header: 'Email', accessor: 'Email', filterable: false},
-      {Header: "Location", accessor: 'Location', filterable: false},
-      {Header: "Content", accessor: 'content', filterable: false},
-      {Header: "coords", accessor: 'coords', filterable: false},
-      {Header: "", filterable: false,
-        Cell: props => {
-          return <button className="" onClick={() =>  this.onDelete(props.original.id)}>Delete</button>
-        }
-      },
-    ];
+  renderTableData() {
+    return this.state.carts.map((cart, index) => {
+       const {id, FirstName, LastName, Phone, Email, Location, content, coords} = cart
 
+       return (
+          <tr key={index}>
+            <td>{id}</td>
+            <td>{FirstName}</td>
+            <td>{LastName}</td>
+            <td>{Phone}</td>
+            <td>{Email}</td>
+            <td>{Location}</td>
+            <td>{coords}</td>
+            <td>{content}</td>
+            <td>
+              <button onClick={(e) =>  this.delete(id)}>X</button>
+              <button>UPDATE</button>
+            </td>
+
+          </tr>
+       )
+    })
+  }
+
+  renderTableHeader() {
+    let header = Object.keys(this.state.carts[0])
+    header.push('action');
+
+    return header.map((key, index) => {
+       return <th key={index}>{key.toUpperCase()}</th>
+    })
+  }
+
+ render() {
     var fields = ['First Name', 'Last Name', 'Phone', 'Email', 'Location', 'content', 'coords'];
-
+console.log(this.state.carts)
     return (
-      <div className="carts">
-        <div className="list">
-          <ReactTable 
-          columns={columns}
-          data={this.state.carts}
-          filterable
-          defaultPageSize={6}
-          >
-
-          </ReactTable>
-          <button onClick={this.togglePopup.bind(this)}>Add Cart</button>
+       <div className="carts-table">
+          <table id='carts'>
+             <tbody>
+               {this.state.carts.length > 0 ? 
+                  <div>
+                    <tr>{this.renderTableHeader()}</tr>
+                    {this.renderTableData()}
+                  </div>
+                   : <h1>loading ....</h1>
+                }
+             </tbody>
+          </table>
+          <button className="add-cart" variant="contained" onClick={this.togglePopup.bind(this)}>+</button>
           {
           this.state.showPopup ?  
             <Popup  
@@ -115,11 +134,11 @@ class Carts extends Component {
                         <label>{field}:       </label>
                         {field === 'coords' ? 
                           <div>
-                            <input id="lat" type="text" name="lat" placeholder="lat" style={{width: 500}}/>
-                            <input id="lng" type="text" name="lng" placeholder="lng" style={{width: 500}}/>
+                            <input id="lat" type="text" name="lat" placeholder="lat" style={{width: 370}}/>
+                            <input id="lng" type="text" name="lng" placeholder="lng" style={{width: 370}}/>
                           </div>
                           :
-                          <input id={`${_.camelCase(field)}`} type="text" name={`${_.camelCase(field)}`} style={{width: 500}}/>
+                          <input id={`${_.camelCase(field)}`} type="text" name={`${_.camelCase(field)}`} style={{width: 370}}/>
                         }
                       </div>
                   ))}
@@ -129,10 +148,9 @@ class Carts extends Component {
             />  
             : null  
           }  
-        </div>
-      </div>
-    );
-  }
+       </div>
+    )
+ }
 }
 
 export default Carts;
