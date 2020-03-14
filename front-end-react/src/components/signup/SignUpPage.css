@@ -1,21 +1,27 @@
-.profile
+.head
 {
-
+  text-align:left;
 }
 
+.profile
+{
+  text-align:left;
+  background-color: #45a049;
+}
 .SignUp
 {
     display: inline-block;
-    width: 50%;
-    height: 80%;
+    width: 410px;
+    height: 90%;
     position: fixed;
     left: 11rem;
     border: solid 10px brown;
     border-radius: 20px;    
+    /* text-align: left; */
 }
 
 input[type=text], select {
-    width: 50%;
+    width: 400px;
     padding: 5px 10px;
     margin: 2px 0;
     display: inline-block;
@@ -23,6 +29,27 @@ input[type=text], select {
     border-radius: 4px;
     box-sizing: border-box;
   }
+
+input[type=email], select {
+  width: 400px;
+  padding: 5px 10px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+input[type=password], select {
+  width: 400px;
+  padding: 5px 10px;
+  margin: 2px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
   input[type=submit] {
     width: 100%;
