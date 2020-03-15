@@ -8,6 +8,7 @@ import Contact from '../components/contact/Contact';
 import Carts from '../components/carts/Carts';
 import Customers from '../components/customers/Customers';
 import Orders from '../components/orders/Orders';
+import Order from '../components/order/Order';
 import Help from '../components/help/Help';
 import Cart from '../components/cart/Cart';
 import SignIn from '../components/signin/SignIn';
@@ -23,32 +24,39 @@ class App extends Component {
 
     this.state = {
       page: 'home',
-      user: ''
+			user: '',
+			userName: '',
+			userId: null,
+			userType: null
     }
-
-    this.setUser = this.setUser.bind(this);
   }
 
   componentDidMount() {
     this.setState({
       page: _.split(_.split(_.split(window.location.href, '/', 4), '?'), ',')[3],
     })
-  }
 
-  setUser(user) {
-    this.setState({user});
+    fetch("/user").then(res => res.json()).then(user => {
+			if (user.length > 0) {
+				this.setState({
+					user: user[0],
+					userName: _.join([user[0].FirstName, user[0].LastName], ' '),
+					userId: user[0].id,
+					userType: user[0].type
+				})
+			}
+		});
   }
 
   render() {
-    var text;
-    var {user} = this.state;
+    var {userName, userId, userType} = this.state;
 
     return (
       <Router>
         <div className="App" style={{height: '100%'}}>
-          <Header />
+          <Header userName={userName}  type={userType} userId={userId}/>
           <div className="App-content">
-            <Nav type={this.state.page} user={user}/>
+            <Nav type={this.state.page} userId={userId}/>
             <Switch>
               <Route path="/(Home|admin/Home|customer/Home|vendor/home)" exact component={Home}/>
               <Route path="/(about|admin/about|customer/about|vendor/about)" component={About}/>
@@ -56,11 +64,12 @@ class App extends Component {
               <Route path="/(carts|admin/carts|customer/carts)" exact component={Carts}/>
               <Route path="/(customers|admin/customers|customer/customers)" exact component={Customers}/>
               <Route path="/(orders|admin/orders|customer/orders)" exact component={Orders}/>
+              <Route path="/(order|customer/order)" render={(props) => (<Order {...props }/>)}/>
               <Route path="/(carts/:id|admin/carts/:id|customer/carts/:id)" component={Cart}/>
               <Route path="/(help|admin/help|customer/help|vendor/help)" component={Help}/>
               <Route path="/(map|admin/map|customer/map|vendor/map)" component={Map}/>
               <Route path="/signup" component={SignUp}/>
-              <Route path="/signin" render={(props) => (<SignIn {...props} user={this.setUser}/>)}/>
+              <Route path="/signin" render={(props) => <SignIn {...props}/>}/>
             </Switch>
           </div>
         </div>

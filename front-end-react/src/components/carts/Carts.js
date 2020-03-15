@@ -17,7 +17,6 @@ class Carts extends Component {
   }
 
   delete(id) {
-    console.log(id, this.props)
     fetch(`/carts/${id}`, {
       method: 'DELETE',
       headers: {
@@ -71,7 +70,7 @@ class Carts extends Component {
       window.location.reload(true);
       this.togglePopup.bind(this)
     }
-  }
+	}
 
   renderTableData() {
     return this.state.carts.map((cart, index) => {
@@ -91,14 +90,13 @@ class Carts extends Component {
               <button onClick={(e) =>  this.delete(id)}>X</button>
               <button>UPDATE</button>
             </td>
-
           </tr>
        )
     })
   }
 
   renderTableHeader() {
-    let header = Object.keys(this.state.carts[0])
+    var header = Object.keys(this.state.carts[0])
     header.push('action');
 
     return header.map((key, index) => {
@@ -108,7 +106,7 @@ class Carts extends Component {
 
  render() {
     var fields = ['First Name', 'Last Name', 'Phone', 'Email', 'Location', 'content', 'coords'];
-console.log(this.state.carts)
+
     return (
        <div className="carts-table">
           <table id='carts'>

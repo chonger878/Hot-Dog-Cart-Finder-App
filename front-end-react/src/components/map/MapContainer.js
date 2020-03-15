@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 import './MapContainer.css'
 import image from '../media/cart2.jpg';
+import _ from 'lodash';
 
 class MapContainer extends Component {
   constructor(props) {
@@ -10,22 +11,40 @@ class MapContainer extends Component {
     this.state = {
       carts: [],
       isCartSelected: false,
-      selectedCart: []
+      selectedCart: [],
+      menu: [],
+      myCartItems: []
     }
   }
 
   componentDidMount() {
     fetch("/carts").then(res => res.json()).then(carts => this.setState({carts: carts}));
- }
+  }
 
   addMarker = () => { // Davids's addMarker fn
     return this.state.carts.map((cart, index) => {
-      return <Marker 
+      return (
+      <Marker 
         key={index} 
         id={index} 
         position={JSON.parse(cart.coords)}
-        // icon={cart.iconImage}
-        onClick={() => this.setState({selectedCart: cart, isCartSelected: true})} />
+        onClick={() => {
+          this.setState({selectedCart: cart, isCartSelected: true});
+
+          fetch(`/menu/${this.state.selectedCart.id}`).then(res => res.json()).then(menu => {
+
+            var menuItems = [];
+
+            _.forEach(menu, item => {
+              item.no = 0;
+
+              menuItems.push(item);
+            });
+
+            this.setState({menu: menu})
+          });
+        }} />
+      )  
     })
   }
 
@@ -33,6 +52,26 @@ class MapContainer extends Component {
     this.setState({isCartSelected: false});
   }
 
+  addToCart(e) {
+  }
+
+  updateNo(value, title) {
+    var myCartItems =  _.clone(this.state.myCartItems);
+
+    _.forEach(myCartItems, item => {
+      if (item.title === title) item.no = value;
+    });
+
+    this.setState({myCartItems});
+  }
+
+  renderTableHeader() {
+    var header = _.keys(this.state.menu[0]);
+
+    return header.map((key, index) => {
+       return <th key={index}>{key.toUpperCase()}</th>
+    })
+  }
 
   render() {
     return (
@@ -55,8 +94,32 @@ class MapContainer extends Component {
             <p>Email: {this.state.selectedCart.Email}</p>
             <p>Location: {this.state.selectedCart.Location}</p>
           </div>
-          <img className="cart-image" src={image} style={{width: 230, height: 230}}/>
-          <div className="cart-menu">menu</div>
+          <img className="cart-image" src={image} alt="loading ..."/>
+          <table className="cart-menu">
+            <thead>
+              <tr>{this.renderTableHeader()}</tr>
+            </thead>
+            <tbody>
+              {
+              this.state.menu.map((menu, index) => {
+                const {title, price, type} = menu
+
+                return (
+                  <tr key={index}>
+                    <td>{title}</td>
+                    <td>{price}</td>
+                    <td>{type}</td>
+                    <td>
+                      <input type="text" placeholder="0" onChange={(e) => this.updateNo(e.target.value, title)} style={{width: 20}}></input>
+                    </td>
+                </tr>
+                )
+              })}
+            </tbody>
+          </table>
+          <div className="my-cart">
+          <button className="my-cart-submit" onClick={(e) => this.addToCart(e)}>Submit</button>
+          </div>
         </div>
       </div>
     );

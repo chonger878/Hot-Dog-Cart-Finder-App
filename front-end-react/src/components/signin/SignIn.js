@@ -1,15 +1,15 @@
 import React from 'react';
-// import signInImage from '../media/profile-logo.png';
 import signInImage from '../media/hotdog-signin.jpg';
 import './SignIn.css';
-import _ from 'lodash'
+// import _ from 'lodash'
 
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-          apiResponse: []
+          apiResponse: [],
+          user: {}
         };
       }
 
@@ -31,12 +31,20 @@ class SignIn extends React.Component {
           var user = allUsers.find(user => user.Email === username && user.Password === password);
           if (user) {
             alert("Login Successful, Hello "+ user.FirstName + " " + user.LastName);
-  
-            this.props.history.push(`/${user.type}`);
-  
-            window.location.reload(true);
 
-            this.props.user(_.join([user.FirstName, user.LastName], ', '))
+						fetch(`/signin/${user.id}`, {
+              method: 'POST',
+              headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              },
+              
+              body: JSON.stringify({id: user.id})
+            }).then(response => response.json()).then(body => console.log(body));
+
+            this.props.history.push(`/${user.type}`);
+
+            window.location.reload(true);
           }
           else {
             alert("Sign in does not match our records");
@@ -50,9 +58,9 @@ class SignIn extends React.Component {
       <div className = "signInPage">
         <img src = {signInImage} className = "sign" alt="loading"/>
         <form name = "userData" className="userData"> 
-          <label for="username">Username: </label>
+          <label>Username: </label>
           <input type="text" name = "user" id="signin-user" />
-          <label for="password">Password: </label>
+          <label>Password: </label>
           <input type="password" name = "pass" id="signin-pass" />
           <input type="submit"  value="Log In"  name = "click"  onClick = {this.validate.bind(this)} /> 
         </form> 

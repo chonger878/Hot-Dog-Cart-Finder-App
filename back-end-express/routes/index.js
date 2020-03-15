@@ -40,6 +40,27 @@ router.get('/orders', function(req, res, next) {
   });
 });
 
+router.get('/userOrder/', (req, res, next) => {
+	db.query(`SELECT * FROM Orders 
+		Join Customers On Customers.CustomerID = Orders.CustomerID 
+		JOIN Signin ON Customers.CustomerID = Signin.CustomerID  
+		WHERE loginStatus = 1`, (err,rows) => {
+			
+		if(err) throw err;
+
+		var resource = rows.map(row => ({
+      id: row.OrderID,
+      Status: row.Status, 
+      CartId: row.CartID, 
+      CustomerId: row.CustomerID,
+      OrderDate: row.OrderDate,
+      Items: row.Items,
+    }));
+
+    res.send(resource);
+  });
+});
+
 // TODO
 // router.post('/orders',(req, res) => {
 //   var data = {
@@ -70,6 +91,28 @@ router.get('/customers', function(req, res, next) {
       LastName: row.LastName, 
       Phone: row.Phone,
       Email: row.Email,
+    }));
+
+    res.send(resource);
+  });
+});
+
+router.get('/menu/:id', function(req, res, next) {
+  db.query(
+    `SELECT * FROM Items 
+    JOIN Menu_Item 
+    on Items.ItemID = Menu_Item.ItemID 
+    JOIN Menu 
+    ON Menu.MenuID = Menu_Item.MenuID 
+    JOIN Vendors 
+    ON Vendors.VendorID = Menu.VendorID
+    WHERE Vendors.VendorID = ${req.params.id}`, (err,rows) => {
+    if(err) throw err;
+
+    var resource = rows.map(row => ({
+      title: row.ItemName, 
+      price: row.Price, 
+      type: row.Type,
     }));
 
     res.send(resource);
@@ -110,6 +153,44 @@ router.get('/signin', (req, res, next) => {
 
     res.send(resource);
   });  
+});
+
+router.get('/user', (req, res, next) => {
+  db.query(`SELECT * FROM Signin WHERE loginStatus = 1`, (err,rows) => {
+		if(err) throw err;
+		
+		var resource = {};
+
+		if (rows) {
+			resource = rows.map(row => ({
+				id: row.SigninId,
+				type: row.Type, 
+				Email: row.Email,
+				Password: row.Password,
+				FirstName: row.FirstName, 
+				LastName: row.LastName
+			}));
+		}
+
+
+    res.send(resource);
+  });  
+});
+
+router.post('/signin/:id', (req, res, next) => {
+  db.query(`UPDATE Signin SET loginStatus = 1 WHERE SigninId = ${req.params.id}`, (err,rows) => {
+    if(err) throw err;
+
+    res.send(rows);
+  });
+});
+
+router.post('/userOut/:id', (req, res, next) => {
+  db.query(`UPDATE Signin SET loginStatus = 0 WHERE SigninId = ${req.params.id}`, (err,rows) => {
+    if(err) throw err;
+
+    res.send(rows);
+  });
 });
 
   //route for signup inserting data to Signin table

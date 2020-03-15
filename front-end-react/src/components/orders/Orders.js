@@ -99,7 +99,6 @@ class Orders extends Component {
 
  render() {
   var fields = ['Status', 'Cart Id', 'Customer Id', 'Order Date', 'items'];
-console.log(this.state)
     return (
        <div className="orders-table">
           <table id='orders'>
