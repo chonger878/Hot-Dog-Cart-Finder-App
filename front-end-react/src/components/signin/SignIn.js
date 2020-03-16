@@ -1,62 +1,71 @@
-import signInImage from '../media/logo.jpg';
 import React from 'react';
-import './SignInPage.css';
-import _ from 'lodash'
+import signInImage from '../media/hotdog-signin.jpg';
+import './SignIn.css';
 
 class SignIn extends React.Component {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+			super(props);
 
-        this.state = {
-          apiResponse: []
-        };
-      }
+			this.state = {
+				apiResponse: [],
+				user: {}
+			};
+		}
 
-    componentDidMount() {
-      fetch("/signin").then(res => res.json()).then(users => this.setState({apiResponse: users}));
-    }
 
-    validate() {
-      if (this.state.apiResponse.length > 0) {
-        let username = document.userData.user.value;
-        let password = document.userData.pass.value;
-  
-        if (username === "" || password === "") {
-            alert("Field cannot be blank");
-        }
-        else {  
-          var allUsers = this.state.apiResponse;
-  
-          var user = allUsers.find(user => user.Email === username && user.Password === password);
-          if (user) {
-            alert("Login Successful, Hello "+ user.FirstName + " " + user.LastName);
-  
-            this.props.history.push(`/${user.type}`);
-  
-            window.location.reload(true);
+	componentDidMount() {
+		fetch("/signin").then(res => res.json()).then(users => this.setState({apiResponse: users}));
+	}
 
-            this.props.user(_.join([user.FirstName, user.LastName], ', '))
-          }
-          else {
-            alert("Sign in does not match our records");
-          }
-        }
-      }
-    }
+  validate() {
+		if (this.state.apiResponse.length > 0) {
+			var username = document.userData.user.value;
+			var password = document.userData.pass.value;
+
+			if (username === "" || password === "") {
+					alert("Field cannot be blank");
+			}
+			else {  
+				var allUsers = this.state.apiResponse;
+				var user = allUsers.find(user => user.Email === username && user.Password === password);
+				
+				if (user) {
+					alert("Login Successful, Hello "+ user.FirstName + " " + user.LastName);
+
+          this.props.history.push(`/${user.type}`);
+  
+          window.location.reload(true);
+
+					fetch(`/signin/${user.id}`, {
+						method: 'POST',
+						headers: {
+						'Accept': 'application/json',
+						'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({id: user.id})
+					}).then(response => response.json()).then(body => console.log(body));
+
+					this.props.history.push(`/${user.type}`);
+
+					window.location.reload(true);
+				}
+				else {
+					alert("Sign in does not match our records");
+				}
+			}
+		}
+  }
 
   render() {
     return(
       <div className = "signInPage">
         <img src = {signInImage} className = "sign" alt="loading"/>
-        <form name = "userData"> 
-          Username: <input type="text" name = "user"/>
-          Password: <input type="text" name = "pass" />
-
-          <div>
-            <input type="submit"  value="Log In"  name = "click"  onClick = {this.validate.bind(this)} /> 
-                        
-            <a href="/signup">Signup</a>
-          </div>
+        <form name = "userData" className="userData"> 
+          <label>Username: </label>
+          <input type="text" name = "user" id="signin-user" />
+          <label>Password: </label>
+          <input type="password" name = "pass" id="signin-pass" />
+          <input type="submit"  value="Log In"  name = "click"  onClick = {this.validate.bind(this)} /> 
         </form> 
       </div>
     );

@@ -1,30 +1,30 @@
 import React, {Component} from 'react';
 import Popup from '../popup/Popup';  
 import _ from 'lodash';
-import './Carts.css'
+import './Customers.css'
 
-class Carts extends Component {
+class Customers extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      carts: [],
+      customers: [],
       showPopup: false 
     };
   }
 
   componentDidMount() {
-    fetch("/carts").then(res => res.json()).then(carts => this.setState({carts: carts}));
+    fetch("/customers").then(res => res.json()).then(customers => this.setState({customers: customers}));
   }
 
   delete(id) {
-    fetch(`/carts/${id}`, {
+    fetch(`/customers/${id}`, {
       method: 'DELETE',
       headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       },
 
-      body: JSON.stringify({VendorID: id})
+      body: JSON.stringify({CustomerID: id})
     }).then(response => response.json()).then(body => console.log(body));
 
     window.location.reload(true);
@@ -39,17 +39,12 @@ class Carts extends Component {
     var lastName = document.getElementById('lastName').value;
     var phone = document.getElementById('phone').value;
     var email = document.getElementById('email').value;
-    var location = document.getElementById('location').value;
-    var lat = document.getElementById('lat').value;
-    var lng = document.getElementById('lng').value;
-    var content = document.getElementById('content').value;
-    var coords = JSON.stringify({lat, lng});
 
-    if (!firstName || !lastName || !phone || !email || !location) {
+    if (!firstName || !lastName || !phone || !email) {
       alert('all fields are required.')
     }
     else {
-      fetch('/carts', {
+      fetch('/customers', {
         method: 'POST',
         headers: {
         'Accept': 'application/json',
@@ -60,21 +55,18 @@ class Carts extends Component {
           firstName: firstName, 
           lastName: lastName,
           phone: phone, 
-          email: email, 
-          location: location,
-          content: content,
-          coords: coords
+          email: email
         })
       }).then(response => response.json()).then(body => console.log(body));
 
       window.location.reload(true);
       this.togglePopup.bind(this)
     }
-	}
+  }
 
   renderTableData() {
-    return this.state.carts.map((cart, index) => {
-       const {id, FirstName, LastName, Phone, Email, Location, content, coords} = cart
+    return this.state.customers.map((customer, index) => {
+       const {id, FirstName, LastName, Phone, Email} = customer
 
        return (
           <tr key={index}>
@@ -83,20 +75,18 @@ class Carts extends Component {
             <td>{LastName}</td>
             <td>{Phone}</td>
             <td>{Email}</td>
-            <td>{Location}</td>
-            <td>{coords}</td>
-            <td>{content}</td>
             <td>
-              <button onClick={(e) =>  this.delete(id)}>X</button>
+              <button onClick={() =>  this.delete(id)}>X</button>
               <button>UPDATE</button>
             </td>
+
           </tr>
        )
     })
   }
 
   renderTableHeader() {
-    var header = Object.keys(this.state.carts[0])
+    let header = Object.keys(this.state.customers[0])
     header.push('action');
 
     return header.map((key, index) => {
@@ -105,39 +95,33 @@ class Carts extends Component {
   }
 
  render() {
-    var fields = ['First Name', 'Last Name', 'Phone', 'Email', 'Location', 'content', 'coords'];
+    var fields = ['First Name', 'Last Name', 'Phone', 'Email'];
 
     return (
-       <div className="carts-table">
-          <table id='carts'>
+       <div className="customers-table">
+          <table id='customers'>
              <tbody>
-               {this.state.carts.length > 0 ? 
+               {this.state.customers.length > 0 ? 
                   <div>
                     <tr>{this.renderTableHeader()}</tr>
                     {this.renderTableData()}
                   </div>
                    : <h1>loading ....</h1>
                 }
+
              </tbody>
           </table>
-          <button className="add-cart" variant="contained" onClick={this.togglePopup.bind(this)}>+</button>
+          <button className="add-customer" onClick={this.togglePopup.bind(this)}>+</button>
           {
           this.state.showPopup ?  
             <Popup  
               closePopup={this.togglePopup.bind(this)}  
               data= {
-                <div className="addCartcontainer">
+                <div>
                   {fields.map((field, index) => (
                       <div className="addCart" key={index}>
                         <label>{field}:       </label>
-                        {field === 'coords' ? 
-                          <div>
-                            <input id="lat" type="text" name="lat" placeholder="lat" style={{width: 370}}/>
-                            <input id="lng" type="text" name="lng" placeholder="lng" style={{width: 370}}/>
-                          </div>
-                          :
-                          <input id={`${_.camelCase(field)}`} type="text" name={`${_.camelCase(field)}`} style={{width: 370}}/>
-                        }
+                        <input id={`${_.camelCase(field)}`} type="text" name={`${_.camelCase(field)}`} style={{width: 370}}/>
                       </div>
                   ))}
                   <button style={{width: 50}} onClick={(e) => this.add(e)}>Add</button>
@@ -151,4 +135,4 @@ class Carts extends Component {
  }
 }
 
-export default Carts;
+export default Customers;
