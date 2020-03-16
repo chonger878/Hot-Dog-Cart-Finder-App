@@ -61,26 +61,6 @@ router.get('/userOrder/', (req, res, next) => {
   });
 });
 
-// TODO
-// router.post('/orders',(req, res) => {
-//   var data = {
-//     SigninId: req.body.SigninId, 
-//     Permission: req.body.Permission,
-//     Type: req.body.Type, 
-//     Email: req.body.Email, 
-//     Password: req.body.Password, 
-//     FirstName: req.body.FirstName, 
-//     LastName: req.body.LastName
-//     };
-    
-//   db.query(`INSERT INTO Signin SET ?`, data,(err, results) => {
-    
-//     if(err) throw err;
-//     res.send(results);
-//     res.end('Success');
-//   });
-// });
-
 router.get('/customers', function(req, res, next) {
   db.query(`SELECT * FROM Customers`, (err,rows) => {
     if(err) throw err;
