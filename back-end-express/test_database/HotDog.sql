@@ -2,6 +2,9 @@
 -- Created: 2/6/2020
 -- Basic layout of database w/ sample data
 
+-- Cascading Update has also been added to FK constraints
+
+
 -- Sample Query
 /*
  SELECT Customers.FirstName, Customers.CustomerID
@@ -9,6 +12,7 @@
 	JOIN Orders USING(CustomerID)
 WHERE CustomerID > 2;
 */
+
 -- -----------------------------------------------------
 -- Schema
 -- -----------------------------------------------------
@@ -80,20 +84,20 @@ INSERT INTO Vendors VALUES
 DROP TABLE IF EXISTS Items;
 
 CREATE TABLE IF NOT EXISTS Items(
-  `ItemID`     INT 		   NOT NULL,
-  `ItemName`   VARCHAR(45) NOT NULL,
-  `Price`      DECIMAL     NOT NULL,
-  `Type`       VARCHAR(45) NOT NULL,
+  `ItemID`     INT 		    NOT NULL,
+  `ItemName`   VARCHAR(45)  NOT NULL,
+  `Price`      DECIMAL(9,2) NOT NULL,
+  `Type`       VARCHAR(45)  NOT NULL,
   
   PRIMARY KEY (ItemID));
 -- -----------------------------------------------------
 -- Data Vendors
 -- -----------------------------------------------------
 INSERT INTO Items VALUES
-	(1, 'Onion', 0.41, 'Topping'),
-	(2, 'Ketchup', 0.74, 'Topping'),
-	(3, 'Coke', 1.55, 'Drink'),
-	(4, 'Relish', 1.55, 'Topping'),
+	(1, 'BeefDog', 4.95, 'HotDog'),
+	(2, 'TofuDog', 6.00, 'HotDog'),
+	(3, 'SeattleDog', 6.55, 'HotDog'),
+	(4, 'SmallDog', 4.95, 'HotDog'),
 	(5, 'BigDog', 5.00, 'HotDog');
 
 -- -----------------------------------------------------
@@ -114,7 +118,8 @@ CREATE TABLE IF NOT EXISTS Orders(
   
   CONSTRAINT fk_Orders_Customers FOREIGN KEY (CustomerID)
     REFERENCES Customers (CustomerID)
-    ON DELETE CASCADE);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 -- -----------------------------------------------------
 -- Data Orders
 -- -----------------------------------------------------
@@ -140,7 +145,8 @@ CREATE TABLE IF NOT EXISTS Menu(
   CONSTRAINT fk_Menu_Vendors1
     FOREIGN KEY (VendorID)
     REFERENCES Vendors (VendorID)
-    ON DELETE CASCADE);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 -- -----------------------------------------------------
 -- Data Menu
 -- -----------------------------------------------------
@@ -167,12 +173,14 @@ CREATE TABLE IF NOT EXISTS Menu_Item(
   CONSTRAINT fk_Menu_has_Items_Menu1
     FOREIGN KEY (MenuID)
     REFERENCES Menu (MenuID)
-    ON DELETE CASCADE,
+    ON DELETE CASCADE
+	ON UPDATE CASCADE,
     
   CONSTRAINT fk_Menu_has_Items_Items1
     FOREIGN KEY (ItemID)
     REFERENCES Items (ItemID)
-    ON DELETE CASCADE);
+    ON DELETE CASCADE
+	ON UPDATE CASCADE);
 -- -----------------------------------------------------
 -- Data Menu_Item
 -- -----------------------------------------------------
@@ -236,7 +244,7 @@ CREATE TABLE IF NOT EXISTS Signin(
   `Permission`   CHAR(10)    NOT NULL,  
   `Type`         VARCHAR(45) NOT NULL,
   `Email`        VARCHAR(45) NOT NULL,
-  `Password`     VARCHAR(4)  NOT NULL,
+  `Password`     VARCHAR(20) NOT NULL,
   `FirstName`    VARCHAR(45) NOT NULL,
   `LastName`     VARCHAR(45) NOT NULL,
   `loginStatus`  int NOT NULL default 0,
@@ -251,8 +259,9 @@ CREATE TABLE IF NOT EXISTS Signin(
   
 
 -- -----------------------------------------------------
--- Data Admin
+-- Data Signin
 -- -----------------------------------------------------
+-- We can potentially create a view for this data instead of having a seperate table.
 INSERT INTO Signin VALUES
 (1,'None', 'customer', 'john.boyd@seattlecolleges.edu','123', 'John', 'Boyd', 0, 1),
 (2,'None', 'customer', 'joe.schmo@gmail.com','1234', 'Joe', 'Shmo', 0, 2),
@@ -264,3 +273,4 @@ INSERT INTO Signin VALUES
 (8,'None', 'admin', 'jones', '1111', 'jones', 'jones', 0, null),
 (9,'None', 'admin', 'dan', '1122', 'dan','dan', 0, null),
 (10,'None', 'admin', 'sarah', '2222', 'sarah', 'sarah', 0, null);
+

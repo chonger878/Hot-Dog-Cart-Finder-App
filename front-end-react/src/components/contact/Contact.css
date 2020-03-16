@@ -1,0 +1,16 @@
+.contactDiv {
+    border: 10px solid brown;
+    border-radius: 20px;
+    margin-left: 12em;
+    height: 20em;
+    padding: 40px;
+}
+
+.contactHeader {
+    color: brown;
+}
+
+.emailContact {
+    color: brown;
+    font-weight: bolder;
+}

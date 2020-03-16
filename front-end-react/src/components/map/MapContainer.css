@@ -36,6 +36,14 @@
     flex-wrap: wrap;
 }
 
+.menuDiv {
+    margin: 0 auto;
+    border: solid 10px brown;
+    border-radius: 20px;
+    width: 80%;
+    height: 100%;
+}
+
 .false {
     display: none;
 }

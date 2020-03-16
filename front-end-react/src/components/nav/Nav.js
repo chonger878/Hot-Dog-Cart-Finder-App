@@ -50,7 +50,7 @@ class Nav extends React.Component {
 					</div> 
 				)
 
-						break;
+					break;
 				case 'customer':
 						nav = (
 								<div className="nav-container">

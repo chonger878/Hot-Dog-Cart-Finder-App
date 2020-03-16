@@ -1,0 +1,26 @@
+.help {
+    border: 10px solid brown;
+    border-radius: 20px;
+    margin-left: 12em;
+    height: 20em;
+    padding: 40px;
+}
+
+.theList {
+    text-align: left;
+    list-style: none;
+}
+.faq {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.wtf {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.srsly {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
