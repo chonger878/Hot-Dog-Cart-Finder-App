@@ -1,4 +1,4 @@
-import profile from '../media/profile-logo.png';
+//import profile from '../media/profile-logo.png';
 import React from 'react';
 import './SignUp.css';
 
@@ -6,7 +6,7 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 11
+      count: 16
     };
 
     this.onSubmit = this.handleSubmit.bind(this);
@@ -23,8 +23,11 @@ class SignUp extends React.Component {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       },
-    
+
       body: JSON.stringify({
+        SigninId: self.refs.SigninId, 
+        Permission: self.refs.Permission,
+        Type: self.refs.Type, 
         Email: self.refs.Email.value,
         Password: self.refs.Password.value,
         FirstName: self.refs.FirstName.value,
@@ -36,8 +39,10 @@ class SignUp extends React.Component {
     render() {
       return (
         <div className="SignUp">
-          <img src = {profile} className = "profile" alt="loading"/>
+          {/* <img src = {profile} className = "profile" alt="loading"/> */}
           <form name = "userData" className="userData" onSubmit={this.onSubmit}> 
+          <input type="text" ref = "SignInID" value={this.state.count}/> 
+          <input type="text" ref = "Permission" value="None"/> 
             <label for="type">Type: </label>
             <select ref="Type" id="signup-type">
               <option value="Vendor">Vendor</option>
@@ -51,7 +56,9 @@ class SignUp extends React.Component {
             <input type="text" ref="Email" id="signup-email" />
             <label for="password">Password: </label>
             <input type="password" ref="Password" id="signup-password" />
-            <input  type="submit" value="Submit" /> 
+            <input  type="submit" value="Submit" />
+            
+            
           </form> 
         </div>  
       )

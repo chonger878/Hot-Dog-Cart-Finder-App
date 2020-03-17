@@ -1,11 +1,13 @@
 .profile {
-
+    /* display: block;
+    margin: 0 auto;
+    margin-top: 60px; */
 }
 
 .SignUp {
   display: inline-block;
-  width: 20%;
-  height: 80%;
+  width: 50%;
+  height: 90%;
   position: fixed;
   left: 15rem;
   border: solid 1px black;
@@ -20,4 +22,5 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  
 }

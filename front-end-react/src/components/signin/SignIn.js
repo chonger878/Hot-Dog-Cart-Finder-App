@@ -59,7 +59,7 @@ class SignIn extends React.Component {
   render() {
     return(
       <div className = "signInPage">
-        <img src = {signInImage} className = "sign" alt="loading"/>
+        {/* <img src = {signInImage} className = "sign" alt="loading"/> */}
         <form name = "userData" className="userData"> 
           <label>Username: </label>
           <input type="text" name = "user" id="signin-user" />

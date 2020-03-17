@@ -63,6 +63,7 @@ class Nav extends React.Component {
 												<a href="/customer/map">Map</a>
 												<a href="/customer/order">My Order</a>
 												<a href="/customer/help">Help</a>
+												<a href="/customer/profile">Profile</a>
 												<a href="/signin" onClick={() => {
 																fetch(`/userOut/${this.props.userId}`, {
 																		method: 'POST',
@@ -119,6 +120,7 @@ class Nav extends React.Component {
 												<a href="/help">Help</a>
 												<a href="/signin">SignIn</a>
 												<a href="/signup">Signup</a>
+												
 												</nav>
 										</div>
 								</div> 

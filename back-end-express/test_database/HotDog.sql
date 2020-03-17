@@ -60,21 +60,22 @@ CREATE TABLE IF NOT EXISTS Vendors(
   `Business`      VARCHAR(45) NULL,
   `Phone`         VARCHAR(45) NULL,
   `Location`      VARCHAR(45) NOT NULL,
-  `Email`         VARCHAR(45) NULL,
+  `Email`         VARCHAR(45) NOT NULL,
   `coords`        JSON,
   `iconImage`     VARCHAR(300) NULL,
   `content`       VARCHAR(45) NULL, 
+  `Password`	  VARCHAR(45) NOT NULL,
   
   PRIMARY KEY (VendorID));
 -- -----------------------------------------------------
 -- Data Vendors
 -- -----------------------------------------------------
 INSERT INTO Vendors VALUES
-	(1, '09:00', '17:00', ('M,T,W,Th'), 'Marta', 'Dennes', 'Twitterlist', '615-747-7967', '123 Fake Street', 'mdennes0@squarespace.com', '{"lat": "47.6010", "lng": "-122.3290"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 1"),
- 	(2, '09:00', '17:00', ('M,T,W'), 'Esdras', 'Caldecott', 'Jatri', '202-563-0622', '321 More Fake Street', 'ecaldecott1@salon.com', '{"lat": "47.6040", "lng": "-122.3260"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 2"),
- 	(3, '09:00', '17:00', ('M,T,W,Th,F'), 'Eddie', 'Gulliford', 'Wikizz', '719-439-2366', '222 Some Street', 'egulliford2@yelp.com', '{"lat": "47.6050", "lng": "-122.3240"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 3"),
- 	(4, '09:00', '17:00', ('F,S,Sn'), 'Janeen', 'Clougher', 'Eamia', '864-575-4106', 'Area 51, NM', 'jclougher3@cmu.edu', '{"lat": "47.6060", "lng": "-122.3250"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 4"),
- 	(5, '09:00', '17:00', ('M,T,W'), 'Abeu', 'Garth', 'Linkbridge', '587-256-7827', '111 Underwater Drive, Atlantis', 'agarth4@xinhuanet.com', '{"lat": "47.6020", "lng": "-122.3270"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 5");
+	(1, '09:00', '17:00', ('M,T,W,Th'), 'Marta', 'Dennes', 'Twitterlist', '615-747-7967', '123 Fake Street', 'mdennes0@squarespace.com', '{"lat": "47.6010", "lng": "-122.3290"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 1", "123"),
+ 	(2, '09:00', '17:00', ('M,T,W'), 'Esdras', 'Caldecott', 'Jatri', '202-563-0622', '321 More Fake Street', 'ecaldecott1@salon.com', '{"lat": "47.6040", "lng": "-122.3260"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 2","123"),
+ 	(3, '09:00', '17:00', ('M,T,W,Th,F'), 'Eddie', 'Gulliford', 'Wikizz', '719-439-2366', '222 Some Street', 'egulliford2@yelp.com', '{"lat": "47.6050", "lng": "-122.3240"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 3","123"),
+ 	(4, '09:00', '17:00', ('F,S,Sn'), 'Janeen', 'Clougher', 'Eamia', '864-575-4106', 'Area 51, NM', 'jclougher3@cmu.edu', '{"lat": "47.6060", "lng": "-122.3250"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 4","123"),
+ 	(5, '09:00', '17:00', ('M,T,W'), 'Abeu', 'Garth', 'Linkbridge', '587-256-7827', '111 Underwater Drive, Atlantis', 'agarth4@xinhuanet.com', '{"lat": "47.6020", "lng": "-122.3270"}', 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png', "Cart 5","123");
 
 
 
@@ -268,9 +269,15 @@ INSERT INTO Signin VALUES
 (3,'None', 'customer', 'armando.tyce@aol.com','1232', 'Armando', 'Tyce', 0, 3),
 (4,'None', 'customer', 'jephthah.nazaret@hotmail.com','1213', 'Jephthah', 'Nazaret', 0, 4),
 (5,'None', 'customer', 'sophia.pitceathly@yahoo.com','1234', 'Sophia', 'Pitceathly', 0, 5),
+
 (6,'None', 'admin', 'farhad', '123', 'farhad', 'bahrehmand', 0, null),
 (7,'None', 'admin', 'adam', '111', 'adam', 'adam', 0, null),
 (8,'None', 'admin', 'jones', '1111', 'jones', 'jones', 0, null),
 (9,'None', 'admin', 'dan', '1122', 'dan','dan', 0, null),
-(10,'None', 'admin', 'sarah', '2222', 'sarah', 'sarah', 0, null);
+(10,'None', 'admin', 'sarah', '2222', 'sarah', 'sarah', 0, null),
 
+(11,'None', 'vendor', 'john.boyd', '123', 'john', 'boyd', 0, null),
+(12,'None', 'vendor', 'someone', '123', 'someone', 'boyd', 0, null),
+(13,'None', 'vendor', 'noone', '123', 'noone', 'boyd', 0, null),
+(14,'None', 'vendor', 'susy', '123', 'susy', 'boyd', 0, null),
+(15,'None', 'vendor', 'louis', '123', 'louis', 'boyd', 0, null);
