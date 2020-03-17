@@ -14,6 +14,7 @@ import Cart from '../components/cart/Cart';
 import SignIn from '../components/signin/SignIn';
 import SignUp from '../components/signup/SignUp';
 import _ from 'lodash';
+import Profile from '../components/profile/Profile';
 
 
 import './App.css';
@@ -68,6 +69,7 @@ class App extends Component {
               <Route path="/(carts/:id|admin/carts/:id|customer/carts/:id)" component={Cart}/>
               <Route path="/(help|admin/help|customer/help|vendor/help)" component={Help}/>
               <Route path="/(map|admin/map|customer/map|vendor/map)" component={Map}/>
+              <Route path="/(profile|customer/profile|vendor/profile)" component={Profile}/>
               <Route path="/signup" component={SignUp}/>
               <Route path="/signin" render={(props) => <SignIn {...props}/>}/>
             </Switch>
