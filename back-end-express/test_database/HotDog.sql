@@ -137,8 +137,8 @@ INSERT INTO Orders VALUES
 DROP TABLE IF EXISTS Menu;
 
 CREATE TABLE IF NOT EXISTS Menu(
-  `MenuID`           INT NOT     NULL,
-  `VendorID` INT         NOT NULL,
+  `MenuID`   INT NOT NULL,
+  `VendorID` INT NOT NULL,
   
   PRIMARY KEY (MenuID, VendorID),
   INDEX fk_Menu_Vendors1_idx (VendorID ASC),
@@ -242,14 +242,14 @@ DROP TABLE IF EXISTS Signin;
 
 CREATE TABLE IF NOT EXISTS Signin(
   `SigninId`     INT         NOT NULL,
-  `Permission`   CHAR(10)    NOT NULL,  
+  `Permission`   CHAR(10)    NULL DEFAULT 'None',  
   `Type`         VARCHAR(45) NOT NULL,
   `Email`        VARCHAR(45) NOT NULL,
   `Password`     VARCHAR(20) NOT NULL,
   `FirstName`    VARCHAR(45) NOT NULL,
   `LastName`     VARCHAR(45) NOT NULL,
-  `loginStatus`  int NOT NULL default 0,
-  `CustomerID` INT 		   NUll,
+  `loginStatus`  INT         NOT NULL DEFAULT 0,
+  `CustomerID`   INT 		 NULL,
 
   PRIMARY KEY (SigninId),
     CONSTRAINT fk_customer

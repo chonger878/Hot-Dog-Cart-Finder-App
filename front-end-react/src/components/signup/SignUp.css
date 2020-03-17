@@ -14,7 +14,7 @@
   border-radius: 20px;
 }
 
-#signup-type, #signup-firstName, #signup-lastName, #signup-email, #signup-password {
+#signup-type, #signup-firstName, #signup-lastName, #signup-email, #signup-password, #signup-ID, #signup-permission {
   width: 90%;
   padding: 12px 20px;
   margin: 10px 10px;

@@ -2,6 +2,7 @@ import React from 'react';
 import signInImage from '../media/hotdog-signin.jpg';
 import './Profile.css';
 
+//grab signed in users info from db and display for customer and vendor
 class Profile extends React.Component
 {
     constructor(props)

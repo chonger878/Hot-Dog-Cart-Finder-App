@@ -91,6 +91,7 @@ class Nav extends React.Component {
 												<a href="/vendor/contact">Contact</a>
 												<a href="/vendor/orders">orders</a>
 												<a href="/vendor/help">Help</a>
+												<a href="/vendor/profile">Profile</a>
 												<a href="/signin" onClick={() => {
 																fetch(`/userOut/${this.props.userId}`, {
 																		method: 'POST',
