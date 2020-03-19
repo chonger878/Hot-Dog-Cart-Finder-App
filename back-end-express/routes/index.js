@@ -283,3 +283,19 @@ router.post('/userOut/:id', (req, res, next) => {
   });
 
 module.exports = router;
+
+router.post('/profile', (req, res) => {
+  var data = {
+    FirstName: req.body.firstName, 
+    LastName: req.body.lastName,
+    Phone: req.body.phone, 
+    Email: req.body.email, 
+    };
+
+    db.query(`SELECT * FROM Customers`, data,(err, results) => {
+    
+    if(err) throw err;
+    res.send(results);
+    res.end('Success');
+  });
+});
