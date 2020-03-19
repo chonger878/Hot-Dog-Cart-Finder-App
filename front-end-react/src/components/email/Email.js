@@ -36,8 +36,6 @@
 //   font-size: 20px !important;
 // }`.trim()
 
-// const sourceURL = 'https://raw.githubusercontent.com/chromakode/react-html-email/master/examples/kitchenSink.js'
-
 // export default function InlineLink({name, children}) {
 //     return(
 //   <Email title="Test Email" headCSS={css}>
