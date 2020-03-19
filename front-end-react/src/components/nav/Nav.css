@@ -1,53 +1,72 @@
+@import "../Animated.css";
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+
 .nav-container {
   display: flex;
   flex-direction: column;
-  height: auto;
-  width: 18vh;
+  justify-content: flex-start;
+  align-items: center;
+  width: 200px;
+  font-family: 'Indie+Flower', cursive;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  /* position: fixed; */
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  top: 5.3rem;
+  left: 0rem;
+  animation: 0.8s slideInUp ease;
+}
+
+.menu {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 100px;
+  padding: 12px 0;
+  background-color: rgb(152, 190, 187);
+  cursor: pointer;
+}
+
+.menu:hover {
+  background-color: rgb(84, 119, 116);
+  color: white;
+  box-shadow: 2px 4px gray;
 }
 
 .nav {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: transparent;
-    position: fixed;
-    border: 10px solid brown;
-    border-radius: 20px;
-    left: 1rem;
-    top: 4.4rem;
-    margin-top: -10px;
-    height: auto;
-    width: 15vh;
-  }
+  display: inline;
+}
 
-.nav-links {
-    width: 40%;
-    display: block;
-    list-style: none;
-    padding: 1rem 0.5rem;
-  }
+.nav a{
+  background-color:white;
+  color: black;
+  display: block;
+  padding: 12px 0;
+  text-decoration: none;
+  border: 1px solid black;
+  width: 100%;
+  border-radius: 300px;
+}
 
-.nav-links a{
-      text-decoration: none;
-      font-weight: bolder;
-      color: brown;
-  }
-
-.nav-links li{
-    padding: 0.2rem 0.5rem;
-    width: 10vh;
+.nav a:hover {
+  animation: 0.8s pulse ease;
+  box-shadow: 2px 2px gray;
 }
 
 .identification {
-  position: fixed;
-  top: 22rem;
-  border: 10px solid brown;
-  border-radius: 20px;
-  left: 1rem;
+  top: 40rem;
+  left: 4rem;
+  padding: 12px;
   height: auto;
-  width: 15vh;
-
+  margin-top: 3rem;
+  position: fixed;
 }
 
 .help {

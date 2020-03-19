@@ -19,6 +19,32 @@
   flex-direction: row;
 }
 
+.customers-table {
+  position: fixed;
+  left: 15rem;
+  top: 10rem;
+  animation: 0.8s fadeInDown ease;
+}
+
+.carts-table {
+  position: fixed;
+  left: 15rem;
+  top: 10rem;
+  animation: 0.8s fadeInLeftBig ease;
+}
+
+.orders-table {
+  position: fixed;
+  left: 15rem;
+  top: 10rem;
+  animation: 0.8s fadeInUpBig ease;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+
 /* .home {
   background-image: url(../components/media/hotdog.jpg);
   width: 100%;

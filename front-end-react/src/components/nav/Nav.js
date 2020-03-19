@@ -1,104 +1,135 @@
 import React from 'react';
-
 import './Nav.css'
 
 class Nav extends React.Component {
-    constructor(props) {
-        super(props);
-  
-        this.state = {
-            user: props.user
-        }
-    }
+	constructor(props) {
+		super(props);
 
-    render() {
-        var nav;
-console.log(this.props.history)
-        switch(this.props.type) {
-            case 'admin':
-                nav = (
-                    <div className="nav-container">
-                        <nav className="nav">
-                            <ul className="nav-links">
-                                <li><a href="/admin">Home</a></li>
-                                <li><a href="/admin/about">About</a></li>
-                                <li><a href="/admin/contact">Contact</a></li>
-                                <li><a href="/admin/carts">Carts</a></li>
-                                <li><a href="/admin/map">Map</a></li>
-                                <li><a href="/admin/help">Help</a></li>
-                                <li><a href="/signin">Log Out</a></li>
-                                <li><a href="/signup">Signup</a></li>
-                            </ul>
-                        </nav>
-                        <div className="identification">
-                            <h3>{this.props.user}</h3>
-                            <h5>'Admin'</h5>
-                        </div>
-                    </div>
-                )
-    
-                break;
-            case 'customer':
-                nav = (
-                    <div className="nav-container">
-                        <nav className="nav">
-                            <ul className="nav-links">
-                                <li><a href="/customer">Home</a></li>
-                                <li><a href="/customer/about">About</a></li>
-                                <li><a href="/customer/contact">Contact</a></li>
-                                <li><a href="/customer/map">Map</a></li>
-                                <li><a href="/customer/help">Help</a></li>
-                                <li><a href="/signin">Log Out</a></li>
-                                <li><a href="/signup">Signup</a></li>
-                            </ul>
-                        </nav>
-                        <div className="identification">
-                            <h3>{this.props.user}</h3>
-                            <h5>'Customer'</h5>
-                        </div>
-                    </div>
-                ) 
-    
-                    break;
-            case 'vendor':
-                nav = (
-                    <div className="nav-container">
-                        <nav className="nav">
-                            <ul className="nav-links">
-                                <li><a href="/vendor">Home</a></li>
-                                <li><a href="/vendor/about">About</a></li>
-                                <li><a href="/vendor/contact">Contact</a></li>
-                                <li><a href="/vendor/help">Help</a></li>
-                                <li><a href="/signin">Log Out</a></li>
-                                <li><a href="/signup">Signup</a></li>
-                            </ul>
-                        </nav>
-                        <div className="identification">
-                            <h3>{this.props.user}</h3>
-                            <h5>'Vendor'</h5>
-                        </div>
-                    </div>
-                ) 
-                
-                break;
-            default:
-                nav = (
-                    <nav className="nav">
-                        <ul className="nav-links">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                        <li><a href="/map">Map</a></li>
-                        <li><a href="/help">Help</a></li>
-                        <li><a href="/signin">SignIn</a></li>
-                        <li><a href="/signup">Signup</a></li>
-                        </ul>
-                    </nav>
-                ) 
-        }
-        
-        return nav;
-    }
+		this.state = {
+				user: props.user,
+				showNav: 'hidden'
+		}
+	}
+
+	toggleShowNav() {
+		var css = (this.state.showNav === "hidden") ? "show" : "hidden";
+
+		this.setState({showNav: css});
+	}
+
+	render() {
+		var nav;
+
+		switch(this.props.type) {
+			case 'admin':
+				nav = (
+					<div className="nav-container">
+						<button className="menu" onClick={() => this.toggleShowNav()}>MENU</button>
+						<div className={this.state.showNav}>
+							<nav className="nav">
+								<a href="/admin">Home</a>
+								<a href="/admin/about">About</a>
+								<a href="/admin/contact">Contact</a>
+								<a href="/admin/carts">Carts</a>
+								<a href="/admin/customers">Customers</a>
+								<a href="/admin/orders">Orders</a>
+								<a href="/admin/map">Map</a>
+								<a href="/admin/help">Help</a>
+								<a href="/signin" onClick={() => {
+									fetch(`/userOut/${this.props.userId}`, {
+										method: 'POST',
+										headers: {
+										'Accept': 'application/json',
+										'Content-Type': 'application/json',
+										},
+										body: JSON.stringify({id: this.props.userId})
+									}).then(response => response.json()).then(body => console.log(body));
+								}}>Log Out</a>                            
+							</nav>
+						</div>
+					</div> 
+				)
+
+					break;
+				case 'customer':
+						nav = (
+								<div className="nav-container">
+								<button className="menu" onClick={() => this.toggleShowNav()}>MENU</button>
+								<div className={this.state.showNav}>
+										<nav className="nav">
+										<a href="/customer">Home</a>
+												<a href="/customer/about">About</a>
+												<a href="/customer/contact">Contact</a>
+												<a href="/customer/map">Map</a>
+												<a href="/customer/order">My Order</a>
+												<a href="/customer/help">Help</a>
+												<a href="/customer/profile">Profile</a>
+												<a href="/signin" onClick={() => {
+																fetch(`/userOut/${this.props.userId}`, {
+																		method: 'POST',
+																		headers: {
+																		'Accept': 'application/json',
+																		'Content-Type': 'application/json',
+																		},
+																		body: JSON.stringify({id: this.props.userId})
+																}).then(response => response.json()).then(body => console.log(body));
+														}}>Log Out</a>    
+										</nav> 
+								</div>
+						</div> 
+						) 
+
+								break;
+				case 'vendor':
+						nav = (
+								<div className="nav-container">
+										<button className="menu" onClick={() => this.toggleShowNav()}>MENU</button>
+										<div className={this.state.showNav}>
+												<nav className="nav">
+												<a href="/vendor">Home</a>
+												<a href="/vendor/about">About</a>
+												<a href="/vendor/contact">Contact</a>
+												<a href="/vendor/orders">orders</a>
+												<a href="/vendor/help">Help</a>
+												<a href="/vendor/profile">Profile</a>
+												<a href="/signin" onClick={() => {
+																fetch(`/userOut/${this.props.userId}`, {
+																		method: 'POST',
+																		headers: {
+																		'Accept': 'application/json',
+																		'Content-Type': 'application/json',
+																		},
+																		body: JSON.stringify({id: this.props.userId})
+																}).then(response => response.json()).then(body => console.log(body));
+														}}>Log Out</a>                            
+												</nav>
+										</div>
+								</div> 
+						) 
+						
+						break;
+				default:
+						nav = (
+								<div className="nav-container">
+										<button className="menu" onClick={() => this.toggleShowNav()}>MENU</button>
+										<div className={this.state.showNav}>
+												<nav className="nav">
+												<a href="/">Home</a>
+												<a href="/about">About</a>
+												<a href="/contact">Contact</a>
+												<a href="/map">Map</a>
+												<a href="/help">Help</a>
+												<a href="/signin">SignIn</a>
+												<a href="/signup">Signup</a>
+												
+												</nav>
+										</div>
+								</div> 
+						) 
+		}
+		
+		return nav
+	}
 }    
 
 export default Nav;
