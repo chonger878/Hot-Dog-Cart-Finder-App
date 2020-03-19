@@ -32,10 +32,6 @@ class SignIn extends React.Component {
 				if (user) {
 					alert("Login Successful, Hello "+ user.FirstName + " " + user.LastName);
 
-          this.props.history.push(`/${user.type}`);
-  
-        //   window.location.reload(true);
-
 					fetch(`/signin/${user.id}`, {
 						method: 'POST',
 						headers: {
