@@ -8,7 +8,7 @@ class Orders extends Component {
     super(props);
     this.state = {
       orders: [],
-      showPopup: false 
+      showPopup: false
     };
   }
 
@@ -108,7 +108,7 @@ class Orders extends Component {
                     <tr>{this.renderTableHeader()}</tr>
                     {this.renderTableData()}
                   </div>
-                   : <h1>loading ....</h1>
+                   : <tr></tr>
                 }
 
              </tbody>

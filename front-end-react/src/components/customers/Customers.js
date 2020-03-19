@@ -106,7 +106,7 @@ class Customers extends Component {
                     <tr>{this.renderTableHeader()}</tr>
                     {this.renderTableData()}
                   </div>
-                   : <h1>loading ....</h1>
+                   : <tr></tr>
                 }
 
              </tbody>

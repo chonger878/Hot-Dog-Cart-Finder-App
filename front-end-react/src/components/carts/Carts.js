@@ -8,8 +8,12 @@ class Carts extends Component {
     super(props);
     this.state = {
       carts: [],
-      showPopup: false 
+      showPopup: false ,
+      updatedCart: {},
+      action: 'add'
     };
+
+    this.togglePopup = this.togglePopup.bind(this)
   }
 
   componentDidMount() {
@@ -30,8 +34,15 @@ class Carts extends Component {
     window.location.reload(true);
   }
 
-  togglePopup() {  
+  togglePopup(id) {
     this.setState({showPopup: !this.state.showPopup});  
+
+    if (id) {
+      var cart = _.find(this.state.carts, cart => cart.id === id);
+      this.setState({updatedCart: cart, action: 'update'});
+    }
+
+    if (this.state.showPopup) this.setState({updatedCart: {}, action: 'add'});
   }  
 
   add(e) {
@@ -48,7 +59,7 @@ class Carts extends Component {
     if (!firstName || !lastName || !phone || !email || !location) {
       alert('all fields are required.')
     }
-    else {
+    else  if (this.state.action === 'add') {
       fetch('/carts', {
         method: 'POST',
         headers: {
@@ -66,10 +77,29 @@ class Carts extends Component {
           coords: coords
         })
       }).then(response => response.json()).then(body => console.log(body));
-
-      window.location.reload(true);
-      this.togglePopup.bind(this)
     }
+    else if (this.state.action === 'update') {
+      fetch(`/updateCart/${this.state.updatedCart.id}`, {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        },
+        
+        body: JSON.stringify({
+          firstName: firstName, 
+          lastName: lastName,
+          phone: phone, 
+          email: email, 
+          location: location,
+          content: content,
+          coords: coords
+        })
+      }).then(response => response.json()).then(body => console.log(body));
+    }
+
+    window.location.reload(true);
+    this.togglePopup();
 	}
 
   renderTableData() {
@@ -88,7 +118,7 @@ class Carts extends Component {
             <td>{content}</td>
             <td>
               <button onClick={(e) =>  this.delete(id)}>X</button>
-              <button>UPDATE</button>
+              <button variant="contained" onClick={() => this.togglePopup(id)}>UPDATE</button>
             </td>
           </tr>
        )
@@ -105,26 +135,29 @@ class Carts extends Component {
   }
 
  render() {
-    var fields = ['First Name', 'Last Name', 'Phone', 'Email', 'Location', 'content', 'coords'];
+    var fields = ['FirstName', 'LastName', 'Phone', 'Email', 'Location', 'content', 'coords'];
+    var value = this.state.updatedCart ? this.state.updatedCart : [];
+    var coords;
+    
+    if (value.coords) coords = JSON.parse(value.coords);
 
     return (
        <div className="carts-table">
           <table id='carts'>
-             <tbody>
-               {this.state.carts.length > 0 ? 
-                  <div>
-                    <tr>{this.renderTableHeader()}</tr>
-                    {this.renderTableData()}
-                  </div>
-                   : <h1>loading ....</h1>
-                }
-             </tbody>
+            {this.state.carts.length > 0 ? 
+              <tbody>
+                <tr>{this.renderTableHeader()}</tr>
+                {this.renderTableData()}
+              </tbody>
+              :
+              <tbody></tbody>
+            }
           </table>
-          <button className="add-cart" variant="contained" onClick={this.togglePopup.bind(this)}>+</button>
+          <button className="add-cart" variant="contained" onClick={() => this.togglePopup(null)}>+</button>
           {
           this.state.showPopup ?  
             <Popup  
-              closePopup={this.togglePopup.bind(this)}  
+              closePopup={() => this.togglePopup(null)}  
               data= {
                 <div className="addCartcontainer">
                   {fields.map((field, index) => (
@@ -132,15 +165,15 @@ class Carts extends Component {
                         <label>{field}:       </label>
                         {field === 'coords' ? 
                           <div>
-                            <input id="lat" type="text" name="lat" placeholder="lat" style={{width: 370}}/>
-                            <input id="lng" type="text" name="lng" placeholder="lng" style={{width: 370}}/>
+                            <input id="lat" type="text" name="lat" placeholder="lat" style={{width: 370}} defaultValue={coords ? coords.lat : ''}/>
+                            <input id="lng" type="text" name="lng" placeholder="lng" style={{width: 370}} defaultValue={coords ? coords.lng : ''}/>
                           </div>
                           :
-                          <input id={`${_.camelCase(field)}`} type="text" name={`${_.camelCase(field)}`} style={{width: 370}}/>
+                          <input id={`${_.camelCase(field)}`} type="text" name={`${_.camelCase(field)}`} style={{width: 370}}  defaultValue={value ? value[`${field}`] : ''} onChange={() => console.log('')}/>
                         }
                       </div>
                   ))}
-                  <button style={{width: 50}} onClick={(e) => this.add(e)}>Add</button>
+                  <button style={{width: 50}} onClick={(e) => this.add(e)}>Add/Update</button>
                 </div>
               }
             />  
