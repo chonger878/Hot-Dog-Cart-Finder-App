@@ -165,6 +165,24 @@ router.post('/signin/:id', (req, res, next) => {
   });
 });
 
+router.post('/updateCart/:id', (req, res, next) => {
+  var data = {
+    FirstName: req.body.firstName, 
+    LastName: req.body.lastName,
+    Phone: req.body.phone, 
+    Email: req.body.email, 
+    Location: req.body.location,
+    Content: req.body.content,
+    coords: req.body.coords
+  };
+
+  db.query(`UPDATE Vendors SET ? WHERE VendorID = ${req.params.id}`, data,(err, rows) => {
+    if(err) throw err;
+
+    res.send(rows);
+  });
+});
+
 router.post('/userOut/:id', (req, res, next) => {
   db.query(`UPDATE Signin SET loginStatus = 0 WHERE SigninId = ${req.params.id}`, (err,rows) => {
     if(err) throw err;
