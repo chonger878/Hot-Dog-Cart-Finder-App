@@ -34,7 +34,7 @@ class SignIn extends React.Component {
 
           this.props.history.push(`/${user.type}`);
   
-          window.location.reload(true);
+        //   window.location.reload(true);
 
 					fetch(`/signin/${user.id}`, {
 						method: 'POST',

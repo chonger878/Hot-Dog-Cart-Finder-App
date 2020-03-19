@@ -12,7 +12,7 @@
 	JOIN Orders USING(CustomerID)
 WHERE CustomerID > 2;
 */
-
+-- SELECT * FROM Signin;
 -- -----------------------------------------------------
 -- Schema
 -- -----------------------------------------------------
@@ -265,7 +265,7 @@ CREATE TABLE IF NOT EXISTS Signin(
 -- We can potentially create a view for this data instead of having a seperate table.
 INSERT INTO Signin VALUES
 (1,'None', 'customer', 'john.boyd@seattlecolleges.edu','123', 'John', 'Boyd', 0, 1),
-(2,'None', 'customer', 'joe.schmo@gmail.com','1234', 'Joe', 'Shmo', 0, 2),
+(2,'None', 'customer', 'ad320test1@gmail.com','123456789', 'Jack', 'Boyd', 0, 2),
 (3,'None', 'customer', 'armando.tyce@aol.com','1232', 'Armando', 'Tyce', 0, 3),
 (4,'None', 'customer', 'jephthah.nazaret@hotmail.com','1213', 'Jephthah', 'Nazaret', 0, 4),
 (5,'None', 'customer', 'sophia.pitceathly@yahoo.com','1234', 'Sophia', 'Pitceathly', 0, 5),

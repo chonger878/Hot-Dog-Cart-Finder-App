@@ -282,7 +282,7 @@ router.post('/userOut/:id', (req, res, next) => {
     });
   });
 
-module.exports = router;
+
 
 router.post('/profile', (req, res) => {
   var data = {
@@ -299,3 +299,64 @@ router.post('/profile', (req, res) => {
     res.end('Success');
   });
 });
+
+//------------------------------------------
+//------------------------------------------
+//------------------------------------------
+
+const nodemailer = require('nodemailer');
+const creds = require('./config');
+const app = express();
+
+var transport = {
+  name: "smtp.gmail.com",
+  host: 'smtp.gmail.com', // e.g. smtp.gmail.com
+  auth: {
+    user: creds.USER,
+    pass: creds.PASS
+  }
+}
+
+var transporter = nodemailer.createTransport(transport)
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('All works fine');
+  }
+});
+
+// router.use(express.json()); 
+router.post('/customer/profile', (req, res) => {
+    const name = req.body.name
+    const email = req.body.email
+    const message = req.body.messageHtml
+    const password = req.body.password
+
+  
+    var mail = {
+      from: name,
+      to: 'ad320test1@gmail.com',  
+      subject: 'Contact form request',
+  
+      // html: message
+      html: `<h1>Hotdog Finder User ${this.name}</h1><p>Here is your User info Email: ${this.email} Password: ${this.password}</p>`
+    }
+  
+    transporter.sendMail(mail, (err, data) => {
+      if (err) {
+        console.log("no")
+        res.json({
+          msg: 'fail'
+        })
+      } else {
+        console.log("hi")
+        res.json({
+          msg: 'success'
+        })
+      }
+    })
+  })
+
+module.exports = router;

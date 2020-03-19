@@ -32,6 +32,7 @@ class SignUp extends React.Component {
       alert("Field cannot be blank");
     }
     else{
+      
       var self = this;
       this.setState({count: this.state.count + 1});
       fetch('/signup', {
@@ -51,6 +52,10 @@ class SignUp extends React.Component {
           LastName: self.refs.LastName.value
         })
       }).then(response => response.json()).then(body => console.log(body));
+      alert("Account creation successful!");
+      //send user info to their email here {Email}
+      window.location=("signin");
+
     } 
   }     
       
