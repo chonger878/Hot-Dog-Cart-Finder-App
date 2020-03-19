@@ -29,7 +29,7 @@ class Profile extends React.Component
     {
         return(
             <div className = "signInPag">
-                {/* <img src = {signInImage} className = "sign" alt="loading"/> */}
+                {/* <img className="profileImage" src = {signInImage} className = "sign" alt="loading"/> */}
                 {<Form/>}
                 {/* {users.FirstName} */}
 
