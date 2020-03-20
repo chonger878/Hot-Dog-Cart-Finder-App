@@ -1,5 +1,5 @@
 import React from 'react';
-import signInImage from '../media/hotdog-signin.jpg';
+// import signInImage from '../media/hotdog-signin.jpg';
 import './SignIn.css';
 
 class SignIn extends React.Component {
@@ -28,7 +28,7 @@ class SignIn extends React.Component {
 			else {  
 				var allUsers = this.state.apiResponse;
 				var user = allUsers.find(user => user.Email === username && user.Password === password);
-				
+				console.log(allUsers, user)
 				if (user) {
 					alert("Login Successful, Hello "+ user.FirstName + " " + user.LastName);
 

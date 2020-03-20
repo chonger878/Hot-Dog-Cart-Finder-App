@@ -64,22 +64,22 @@ class SignUp extends React.Component {
         <div className="SignUp">
           {/* <img src = {profile} className = "profile" alt="loading"/> */}
           <form name = "userData" className="userData" onSubmit={this.onSubmit}> 
-          <label for="ID"> ID Number: </label>
+          <label > ID Number: </label>
           <input type="text"  value={this.state.count} ref = "SigninId" id="signup-ID"/> 
-          <label for="permission">Permission: </label>
+          <label >Permission: </label>
           <input type="text" ref = "Permission" value="None" id="signup-permission"/> 
-            <label for="type">Type: </label>
+            <label>Type: </label>
             <select ref="Type" id="signup-type">
               <option value="Vendor">Vendor</option>
               <option value="Customer">Customer</option>
             </select>
-            <label for="firstName">FirstName: </label>
+            <label>FirstName: </label>
             <input type="text" ref="FirstName" id="signup-firstName" />
-            <label for="lastName">LastName: </label>
+            <label>LastName: </label>
             <input type="text" ref="LastName" id="signup-lastName" />
-            <label for="email">Email: </label>
+            <label>Email: </label>
             <input type="text" ref="Email" id="signup-email" />
-            <label for="password">Password: </label>
+            <label>Password: </label>
             <input type="password" ref="Password" id="signup-password" />
             <input  type="submit" value="Submit" />
             

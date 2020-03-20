@@ -1,5 +1,5 @@
 import React from 'react';
-import signInImage from '../media/hotdog-signin.jpg';
+// import signInImage from '../media/hotdog-signin.jpg';
 import './Profile.css';
 import Form from '../email/Form';
 

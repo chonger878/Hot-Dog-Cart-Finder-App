@@ -3,7 +3,7 @@
     margin-top: 2rem;
 }
 .signInPage {
-    display: inline-block;
+    display: flex;
     width: 20%;
     height: 60%;
     position: fixed;
@@ -11,9 +11,10 @@
     border: solid 1px black;
     border-radius: 20px;
 }
-
+`
 .userData {
     display: inline-block;
+    align-self: center;
 }
 
 #signin-user, #signin-pass {

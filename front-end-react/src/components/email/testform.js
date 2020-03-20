@@ -1,5 +1,5 @@
-import MyEmail from './Email';
-import { renderEmail } from 'react-html-email';
+// import MyEmail from './Email';
+// import { renderEmail } from 'react-html-email';
 import React from 'react';
 
 export default class extends React.Component {
