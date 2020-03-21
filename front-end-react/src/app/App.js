@@ -15,6 +15,7 @@ import SignIn from '../components/signin/SignIn';
 import SignUp from '../components/signup/SignUp';
 import _ from 'lodash';
 import Profile from '../components/profile/Profile';
+import inventoryLog from '../components/inventory/inventoryLog';
 
 
 import './App.css';
@@ -72,6 +73,7 @@ class App extends Component {
               <Route path="/(profile|customer/profile|vendor/profile)" component={Profile}/>
               <Route path="/signup" component={SignUp}/>
               <Route path="/signin" render={(props) => <SignIn {...props}/>}/>
+              <Route path = "/inventoryLog" render = {(props) => <inventoryLog {...props}/>}/>
             </Switch>
           </div>
         </div>
